@@ -1,10 +1,14 @@
 //package
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//screen
+import 'package:todo_app/constant/color_manger.dart';
+//constant
 import 'package:todo_app/constant/route_name.dart';
-import 'package:todo_app/presentation/screen/splash/up_to_do.dart';
-import 'package:todo_app/constant/color.dart';
+//screen
+import 'package:todo_app/presentation/screen/on_boarding/Intro_screen%20.dart';
+import 'package:todo_app/presentation/screen/up_to_do.dart';
+import 'package:todo_app/presentation/screen/auth/hallo_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +20,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      
       debugShowCheckedModeBanner: false,
      home: const UpToDoScreen(),
       getPages: [
         GetPage(
           name: RouteName.KupToDo, page: () => const UpToDoScreen()
+
+          ),
+          GetPage(
+          name: RouteName.KMangeTaskSplash, page: () => const IntroScreen ()
+
+          ),
+           GetPage(
+          name: RouteName.KHelloScreen, page: () => const HalloScreen()
+
           ),
       ],
-      theme: ThemeData(scaffoldBackgroundColor: ColorManger.KPrimaryColor),
+      theme: ThemeData(
+        fontFamily: 'Lato',
+        scaffoldBackgroundColor: ColorManger.KPrimaryColor),
     );
   }
 }
