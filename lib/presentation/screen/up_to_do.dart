@@ -13,7 +13,7 @@ class UpToDoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 1),
     ).then((_) {
       Get.offNamed(RouteName.KMangeTaskSplash);
     });

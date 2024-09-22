@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 //constant
 import '../../../constant/string_manger.dart';
 import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/constant/size_manger.dart';
-//screen
+import 'package:todo_app/constant/route_name.dart';
+//Widget
+import '../../widgets/custom_app_bar.dart';
 import '../../widgets/custom_auth_button.dart';
 
 class StartScreen extends StatelessWidget {
@@ -14,18 +15,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios)),
-
-        // leading: const Icon(
-        //   Icons.arrow_back_ios,
-        //   color: ColorManger.KWhiteColor,
-        // ),
-      ),
+      appBar: buildAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(PaddingManger.P20),
         child: Column(
@@ -56,15 +46,21 @@ class StartScreen extends StatelessWidget {
                 CustomAuthButton(
                   title: StringManger.kLogin,
                   color: ColorManger.KHeliotrop,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(RouteName.KLoginScreen);
+                  },
                 ),
-                const Gap(30),
+                const SizedBox(
+                  height: HightManger.H30,
+                ),
                 CustomAuthButton(
                   title: StringManger.kcreateAccount,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(RouteName.KRegisterScreen);
+                  },
                 ),
-                SizedBox(
-                  height: 30,
+                const SizedBox(
+                  height: HightManger.H30,
                 ),
               ],
             )

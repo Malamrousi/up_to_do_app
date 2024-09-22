@@ -3,7 +3,9 @@ class WidthManger {
   static const double W113 = 113;
   static const double W213 = 213;
   static const double W90 = 90;
-  static const double W327 = 327;
+  static const double W327 = 327;  
+  static const double W30 = 30;  
+  static const double W24 = 24;  
 }
 
 class HightManger {
@@ -11,11 +13,14 @@ class HightManger {
   static const double H113 = 113;
   static const double H277_78 = 277.78;
   static const double H48 = 48;
+  static const double H30 = 30;
+  static const double H24 = 24;
 }
 
 class PaddingManger {
   static const double P20 = 20;
   static const double P16 = 16;
+  static const double P30= 30;
 }
 
 class FontSizeValue {
@@ -25,4 +30,5 @@ class FontSizeValue {
 
 class BorderRadiusValue {
   static const double BV25= 25;
+  static const double BV10= 10;
 }

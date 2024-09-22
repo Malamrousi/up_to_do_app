@@ -8,6 +8,8 @@ import 'package:todo_app/constant/route_name.dart';
 import 'package:todo_app/presentation/screen/on_boarding/Intro_screen%20.dart';
 import 'package:todo_app/presentation/screen/up_to_do.dart';
 import 'package:todo_app/presentation/screen/auth/start_screen.dart';
+import 'package:todo_app/presentation/screen/auth/register.dart';
+import 'package:todo_app/presentation/screen/auth/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,11 +31,13 @@ class MyApp extends StatelessWidget {
           name: RouteName.KHelloScreen,
           page: () => const StartScreen(),
         ),
+        GetPage(
+            name: RouteName.KRegisterScreen,
+            page: () => const RegisterScreen()),
+        GetPage(name: RouteName.KLoginScreen, page: () => const LoginScreen()),
       ],
       theme: ThemeData(
           appBarTheme: const AppBarTheme(
-         
-             
               color: ColorManger.KPrimaryColor,
               foregroundColor: ColorManger.KWhiteColor),
           fontFamily: 'Lato',
