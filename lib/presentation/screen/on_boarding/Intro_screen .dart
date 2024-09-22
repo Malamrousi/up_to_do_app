@@ -1,6 +1,8 @@
+//package
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+//constant
 import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/constant/route_name.dart';
 import '../../../constant/image_manger.dart';
@@ -42,7 +44,7 @@ class _IntroScreen extends State<IntroScreen> {
           decoration: pageDecoration,
         ),
         PageViewModel(
-          image: Image.asset(ImageManger.Kslide1),
+          image: Image.asset(ImageManger.Kslide2),
           title: StringManger.KCreatedDailyRoutine,
           body: StringManger.KdesOnSlidePageTwo,
           decoration: pageDecoration,
@@ -82,9 +84,9 @@ class _IntroScreen extends State<IntroScreen> {
       done: Container(
         width: WidthManger.W140,
         height: HightManger.H48,
-        decoration: BoxDecoration(
-            color: const Color(0xff8875FF),
-            borderRadius: BorderRadius.circular(BorderRadiusValue.BV25)),
+        decoration:const BoxDecoration(
+            color:  Color(0xff8875FF),
+            ),
         child: const Center(
           child: Text(
             StringManger.kGettingStarted,

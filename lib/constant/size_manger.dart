@@ -3,6 +3,7 @@ class WidthManger {
   static const double W113 = 113;
   static const double W213 = 213;
   static const double W90 = 90;
+  static const double W327 = 327;
 }
 
 class HightManger {
