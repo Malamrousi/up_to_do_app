@@ -12,7 +12,7 @@ class StringManger {
   static const String kGettingStarted = 'Getting Started';
   static const String kNext = 'Next';
   static const String kSkip = 'Skip';
-  static const String kLogin = 'LOGIN';
+  static const String kLogin = 'Login';
   static const String kcreateAccount = 'Create account';
   static const String kWelcometopTodo = 'Welcome to UpTodo';
   static const String kLoginOrCreate =
