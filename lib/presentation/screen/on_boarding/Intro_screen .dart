@@ -57,10 +57,10 @@ class _IntroScreen extends State<IntroScreen> {
         ),
       ],
       onDone: () {
-        Get.toNamed(RouteName.KHelloScreen);
+        Get.toNamed(RouteName.KStartScreen);
       },
       onSkip: () {
-        Get.toNamed(RouteName.KHelloScreen);
+        Get.toNamed(RouteName.KStartScreen);
       },
       showSkipButton: true,
       nextFlex: 0,

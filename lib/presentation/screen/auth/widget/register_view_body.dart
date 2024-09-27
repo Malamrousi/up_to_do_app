@@ -1,15 +1,15 @@
 //packge
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+//constant
 import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/constant/route_name.dart';
 import 'package:todo_app/constant/size_manger.dart';
-//constant
 import 'package:todo_app/constant/string_manger.dart';
-import 'package:todo_app/data/controller/validator.dart';
-import 'package:todo_app/presentation/screen/auth/widget/register_form_filed.dart';
 //widget
+import 'custom_divider.dart';
 import 'register_social_auth.dart';
+import 'package:todo_app/presentation/screen/auth/widget/register_form_filed.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});
@@ -41,22 +41,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   height: HightManger.H48,
                 ),
                 const RegisterForm(),
-                const Row(children: <Widget>[
-                  Expanded(
-                      child: Divider(
-                    color: ColorManger.KDividerColor,
-                  )),
-                  Text(
-                    StringManger.Kor,
-                    style: TextStyle(
-                        color: ColorManger.KDividerColor,
-                        fontSize: FontSizeValue.Fv16),
-                  ),
-                  Expanded(
-                      child: Divider(
-                    color: ColorManger.KDividerColor,
-                  )),
-                ]),
+                const CustomDivider(),
                 const SizedBox(
                   height: HightManger.H30,
                 ),
