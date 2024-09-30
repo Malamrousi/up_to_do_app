@@ -1,10 +1,8 @@
 //package
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter/material.dart';
 //constant
 import '../../constant/color_manger.dart';
 import '../../constant/size_manger.dart';
-import '../../constant/string_manger.dart';
 
 class CustomFromTextFiled extends StatelessWidget {
   const CustomFromTextFiled(
@@ -25,7 +23,7 @@ class CustomFromTextFiled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilderTextField(
+    return TextFormField(
       keyboardType: keyboardType,
       
       cursorColor: ColorManger.KHeliotrop,
@@ -35,7 +33,6 @@ class CustomFromTextFiled extends StatelessWidget {
       ),
       validator: validator,
       onSaved: (value) => onSaved(value!),
-      name: StringManger.Kemail,
       decoration: InputDecoration(
         
         label: Text(label),

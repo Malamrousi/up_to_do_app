@@ -10,7 +10,8 @@ class Validator {
     }
     return null;
   }
-   String? passwordValidator(String? value) {
+
+  String? passwordValidator(String? value, String? confirmPassword) {
     if (value == null || value.isEmpty) {
       return 'Enter password';
     } else if (value.length < 8) {
@@ -23,7 +24,12 @@ class Validator {
       return '1 number needed';
     } else if (!RegExp(r'[!@#\$&*~]').hasMatch(value)) {
       return '1 special char needed';
+    } else if (confirmPassword != null && value != confirmPassword) {
+      return 'Passwords do not match';
     }
     return null;
   }
+
+
+  
 }

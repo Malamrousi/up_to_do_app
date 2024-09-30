@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 //constant
-import 'package:todo_app/data/controller/validator.dart';
+import 'package:todo_app/data/services/validator.dart';
 //widget
 import '../../widgets/custom_app_bar.dart';
 import 'widget/login_view_body.dart';

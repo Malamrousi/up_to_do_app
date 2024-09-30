@@ -6,8 +6,9 @@ import 'package:todo_app/constant/route_name.dart';
 import 'package:todo_app/constant/size_manger.dart';
 //constant
 import 'package:todo_app/constant/string_manger.dart';
-import 'package:todo_app/data/controller/validator.dart';
+import 'package:todo_app/data/services/validator.dart';
 //widget
+import 'custom_divider.dart';
 import 'log_in_form.dart';
 import 'login_social_auth.dart';
 
@@ -44,22 +45,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 const SizedBox(
                   height: HightManger.H30,
                 ),
-                const Row(children: <Widget>[
-                  Expanded(
-                      child: Divider(
-                    color: ColorManger.KDividerColor,
-                  )),
-                  Text(
-                    StringManger.Kor,
-                    style: TextStyle(
-                        color: ColorManger.KDividerColor,
-                        fontSize: FontSizeValue.Fv16),
-                  ),
-                  Expanded(
-                      child: Divider(
-                    color: ColorManger.KDividerColor,
-                  )),
-                ]),
+                const CustomDivider(),
                 const SizedBox(
                   height: HightManger.H30,
                 ),
