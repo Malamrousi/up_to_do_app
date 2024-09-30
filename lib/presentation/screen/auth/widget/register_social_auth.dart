@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 //constant
 import '../../../../constant/image_manger.dart';
 import '../../../../constant/size_manger.dart';
 import '../../../../constant/string_manger.dart';
+import '../../../../data/controller/auth_contoller.dart';
 import '../../../widgets/social_auth_button.dart';
 
 class RegisterSocialAuth extends StatelessWidget {
@@ -10,12 +12,17 @@ class RegisterSocialAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthContoller authContoller = Get.find<AuthContoller>();
+
     return Column(
       children: [
         SocialAuthButton(
           image: ImageManger.Kgoogle,
           title: StringManger.KRegisterwithGoogle,
-          onPressed: () {},
+          onPressed: ()async {
+                 await       authContoller.signInWithGoogle();
+
+          },
         ),
         const SizedBox(
           height: HightManger.H30,
@@ -23,7 +30,8 @@ class RegisterSocialAuth extends StatelessWidget {
         SocialAuthButton(
           image: ImageManger.Kfacebook,
           title: StringManger.KRegisterwithFacebook,
-          onPressed: () {},
+          onPressed: () {
+          },
         ),
       ],
     );

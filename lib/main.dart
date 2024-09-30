@@ -12,11 +12,14 @@ import 'package:todo_app/presentation/screen/auth/start_screen.dart';
 import 'package:todo_app/presentation/screen/auth/register.dart';
 import 'package:todo_app/presentation/screen/home/screen/home_screen.dart';
 import 'package:todo_app/presentation/screen/auth/login.dart';
+
+import 'data/controller/auth_contoller.dart';
 //controller
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Get.put(AuthContoller());
   runApp(const MyApp());
 }
 

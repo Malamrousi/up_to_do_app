@@ -6,7 +6,6 @@ import 'package:todo_app/constant/route_name.dart';
 import 'package:todo_app/constant/size_manger.dart';
 //constant
 import 'package:todo_app/constant/string_manger.dart';
-import 'package:todo_app/data/services/validator.dart';
 //widget
 import 'custom_divider.dart';
 import 'log_in_form.dart';
@@ -22,7 +21,6 @@ class LoginViewBody extends StatefulWidget {
 class _LoginViewBodyState extends State<LoginViewBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final Validator validator = Validator();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
