@@ -101,7 +101,7 @@ class AuthContoller extends GetxController {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
       if (googleUser == null) {
-        Get.snackbar('Sign In', 'Login cancelled',
+        Get.snackbar('Sign In', 'Login cancelled by user.',
             snackPosition: SnackPosition.TOP,
             duration: const Duration(seconds: 3),
             backgroundColor: Get.theme.snackBarTheme.backgroundColor,
@@ -127,14 +127,11 @@ class AuthContoller extends GetxController {
       );
 
       _createUserFireStore(_newUser, result.user!);
-    } on FirebaseAuthException catch (e) {
-      var authStatus = AuthExceptionHandler.handleException(e);
-      var errorMessage =
-          AuthExceptionHandler.generateExceptionMessage(authStatus);
-
-      Get.snackbar('auth.signUpErrorTitle', errorMessage,
+    } catch (e) {
+      print(e.toString());
+      Get.snackbar('Error', 'Failed to sign in with Google: $e',
           snackPosition: SnackPosition.TOP,
-          duration: const Duration(seconds: 10),
+          duration: Duration(seconds: 3),
           backgroundColor: Get.theme.snackBarTheme.backgroundColor,
           colorText: Get.theme.snackBarTheme.actionTextColor);
     }

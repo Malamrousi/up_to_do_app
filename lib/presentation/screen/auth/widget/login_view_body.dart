@@ -39,7 +39,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 fontSize: FontSizeValue.Fv32,
               ),
             ),
-                LogInForm(),
+            const    LogInForm(),
                 const SizedBox(
                   height: HightManger.H30,
                 ),

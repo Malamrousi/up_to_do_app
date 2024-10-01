@@ -1,12 +1,10 @@
 //packge
 import 'package:flutter/material.dart';
 import 'package:todo_app/constant/color_manger.dart';
-
 import 'package:todo_app/constant/size_manger.dart';
 //constant
 import 'package:todo_app/constant/string_manger.dart';
 import 'package:todo_app/data/helpers/validator.dart';
-
 //widget
 import '../../../../data/controller/auth_contoller.dart';
 import '../../../widgets/custom_auth_button.dart';

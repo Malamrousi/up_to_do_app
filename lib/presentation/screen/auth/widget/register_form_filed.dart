@@ -30,6 +30,7 @@ class _RegisterFormState extends State<RegisterForm> {
     return Form(
         autovalidateMode: autovalidateMode,
         key: formKey,
+    
         child: Column(
           children: [
             CustomFromTextFiled(
@@ -79,6 +80,7 @@ class _RegisterFormState extends State<RegisterForm> {
               title: StringManger.KRegister,
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
+
                   authController.registerWithEmailAndPassword(context);
                 } else {
                   autovalidateMode = AutovalidateMode.always;

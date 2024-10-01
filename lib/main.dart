@@ -12,6 +12,7 @@ import 'package:todo_app/presentation/screen/auth/start_screen.dart';
 import 'package:todo_app/presentation/screen/auth/register.dart';
 import 'package:todo_app/presentation/screen/home/screen/home_screen.dart';
 import 'package:todo_app/presentation/screen/auth/login.dart';
+//controller
 
 import 'data/controller/auth_contoller.dart';
 //controller
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       home: const UpToDoScreen(),
       getPages: [
         GetPage(name: RouteName.KupToDo, page: () => const UpToDoScreen()),
+        GetPage(name: RouteName.kOnBoarding, page: () => const IntroScreen()),
         GetPage(name: RouteName.kOnBoarding, page: () => const IntroScreen()),
         GetPage(
           name: RouteName.KStartScreen,
