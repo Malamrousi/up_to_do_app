@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+
 //CONSTANT
 import 'package:todo_app/constant/route_name.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -22,6 +24,7 @@ class AuthContoller extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Rx<User?> firebaseUser = Rx<User?>(null);
+  RxBool isLoading = false.obs;
   final String UserCollection = 'Users';
   @override
   void onReady() {
@@ -51,6 +54,7 @@ class AuthContoller extends GetxController {
 
   signInWithEmailAndPassword(BuildContext context) async {
     try {
+      isLoading.value = true;
       await auth.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim());
@@ -61,16 +65,16 @@ class AuthContoller extends GetxController {
       var errorMessage =
           AuthExceptionHandler.generateExceptionMessage(authStatus);
 
-      Get.snackbar('Error', errorMessage,
-          duration: const Duration(seconds: 3),
-          snackPosition: SnackPosition.TOP,
-          backgroundColor: Get.theme.snackBarTheme.backgroundColor,
-          colorText: ColorManger.KWhiteColor);
+      SnackBar(errorMessage);
+    } finally {
+      isLoading.value = false;
     }
   }
 
   registerWithEmailAndPassword(BuildContext contex) async {
     try {
+      isLoading.value = true;
+
       await auth
           .createUserWithEmailAndPassword(
               email: emailController.text.trim(),
@@ -88,16 +92,16 @@ class AuthContoller extends GetxController {
       var errorMessage =
           AuthExceptionHandler.generateExceptionMessage(authStatus);
 
-      Get.snackbar('auth.signUpErrorTitle', errorMessage,
-          snackPosition: SnackPosition.TOP,
-          duration: const Duration(seconds: 10),
-          backgroundColor: Get.theme.snackBarTheme.backgroundColor,
-          colorText: Get.theme.snackBarTheme.actionTextColor);
+      SnackBar(errorMessage);
+    } finally {
+      isLoading.value = false;
     }
   }
 
   Future signInWithGoogle() async {
     try {
+      isLoading.value = true;
+
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
       if (googleUser == null) {
@@ -128,13 +132,51 @@ class AuthContoller extends GetxController {
 
       _createUserFireStore(_newUser, result.user!);
     } catch (e) {
-      print(e.toString());
-      Get.snackbar('Error', 'Failed to sign in with Google: $e',
-          snackPosition: SnackPosition.TOP,
-          duration: Duration(seconds: 3),
-          backgroundColor: Get.theme.snackBarTheme.backgroundColor,
-          colorText: Get.theme.snackBarTheme.actionTextColor);
+      SnackBar(e);
+    } finally {
+      isLoading.value = false;
     }
+  }
+
+  //sign with facebook
+  Future signInWithFacebook() async {
+    try {
+      isLoading.value = true;
+
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      if (loginResult.status == LoginStatus.cancelled) {
+        return;
+      }
+
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+
+      final UserCredential result = await FirebaseAuth.instance
+          .signInWithCredential(facebookAuthCredential);
+
+      final userData = await FacebookAuth.instance.getUserData();
+
+      UserModel _newUser = UserModel(
+        name: result.user?.displayName ?? userData['name'] ?? 'No Name',
+        email: result.user?.email ?? userData['email'] ?? 'No Email',
+        uid: result.user!.uid,
+      );
+
+      _createUserFireStore(_newUser, result.user!);
+    } catch (e) {
+      SnackBar(e);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  void SnackBar(Object e) {
+    Get.snackbar('Error', 'Failed to sign  $e',
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(seconds: 3),
+        backgroundColor: Get.theme.snackBarTheme.backgroundColor,
+        colorText: Get.theme.snackBarTheme.actionTextColor);
   }
 
   void _createUserFireStore(UserModel user, User firebaseuser) {
@@ -148,6 +190,7 @@ class AuthContoller extends GetxController {
     passwordController.clear();
     await GoogleSignIn().signOut();
     await auth.signOut();
+    await FacebookAuth.instance.logOut();
     Get.offAllNamed(RouteName.KStartScreen);
   }
 }

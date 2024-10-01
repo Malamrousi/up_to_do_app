@@ -12,28 +12,36 @@ class RegisterSocialAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthContoller authContoller = Get.find<AuthContoller>();
+    AuthContoller authController = Get.find<AuthContoller>();
 
-    return Column(
-      children: [
-        SocialAuthButton(
-          image: ImageManger.Kgoogle,
-          title: StringManger.KRegisterwithGoogle,
-          onPressed: ()async {
-                 await       authContoller.signInWithGoogle();
-
-          },
-        ),
-        const SizedBox(
-          height: HightManger.H30,
-        ),
-        SocialAuthButton(
-          image: ImageManger.Kfacebook,
-          title: StringManger.KRegisterwithFacebook,
-          onPressed: () {
-          },
-        ),
-      ],
-    );
+    return GetBuilder<AuthContoller>(builder: (contoller) {
+      if (authController.isLoading.value) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      } else {
+        return Column(
+          children: [
+            SocialAuthButton(
+              image: ImageManger.Kgoogle,
+              title: StringManger.KLoginwithGoogle,
+              onPressed: () async {
+                await authController.signInWithGoogle();
+              },
+            ),
+            const SizedBox(
+              height: HightManger.H30,
+            ),
+            SocialAuthButton(
+              image: ImageManger.Kfacebook,
+              title: StringManger.KLoginwithFacebook,
+              onPressed: () async {
+                await authController.signInWithFacebook();
+              },
+            ),
+          ],
+        );
+      }
+    });
   }
 }

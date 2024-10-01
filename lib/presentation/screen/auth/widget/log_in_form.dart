@@ -1,5 +1,6 @@
 //packge
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/constant/size_manger.dart';
 //constant
@@ -25,8 +26,6 @@ class _LogInFormState extends State<LogInForm> {
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
- 
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -43,10 +42,10 @@ class _LogInFormState extends State<LogInForm> {
               label: StringManger.KEmail,
               hintText: StringManger.KEnteryourEmail,
               onSaved: (value) {
-               authController.emailController.text = value;
+                authController.emailController.text = value;
               },
               obscureText: false,
-              validator:Validator().email,
+              validator: Validator().email,
             ),
             const SizedBox(
               height: HightManger.H48,
@@ -57,28 +56,36 @@ class _LogInFormState extends State<LogInForm> {
               label: StringManger.KPassword,
               hintText: StringManger.KEnteryourpassword,
               onSaved: (value) {
-          authController.passwordController.text = value;
+                authController.passwordController.text = value;
               },
               obscureText: true,
-              validator:Validator().password,
+              validator: Validator().password,
             ),
             const SizedBox(
               height: HightManger.H48,
             ),
-            CustomAuthButton(
-              color: ColorManger.KHeliotrop,
-              title: StringManger.kLogin,
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
+            GetBuilder<AuthContoller>(builder: (contoller) {
+              if (authController.isLoading.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return CustomAuthButton(
+                  color: ColorManger.KHeliotrop,
+                  title: StringManger.kLogin,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
 
-                  authController.signInWithEmailAndPassword(context);
-                } else {
-                  autovalidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
-              },
-            ),
+                      authController.signInWithEmailAndPassword(context);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                );
+              }
+            })
           ],
         ));
   }

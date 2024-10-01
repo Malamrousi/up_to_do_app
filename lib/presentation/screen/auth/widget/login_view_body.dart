@@ -21,6 +21,7 @@ class LoginViewBody extends StatefulWidget {
 class _LoginViewBodyState extends State<LoginViewBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -32,14 +33,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 const Text(
-              StringManger.kLogin,
-              style: TextStyle(
-                color: ColorManger.KWhiteColor,
-                fontSize: FontSizeValue.Fv32,
-              ),
-            ),
-            const    LogInForm(),
+                const Text(
+                  StringManger.kLogin,
+                  style: TextStyle(
+                    color: ColorManger.KWhiteColor,
+                    fontSize: FontSizeValue.Fv32,
+                  ),
+                ),
+                const LogInForm(),
                 const SizedBox(
                   height: HightManger.H30,
                 ),
@@ -47,7 +48,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 const SizedBox(
                   height: HightManger.H30,
                 ),
-              const  LoginSocialAuth(),
+                const LoginSocialAuth(),
                 const SizedBox(
                   height: HightManger.H48,
                 ),

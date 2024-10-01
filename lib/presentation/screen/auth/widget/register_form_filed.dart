@@ -1,5 +1,6 @@
 //packge
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/constant/size_manger.dart';
 //constant
@@ -19,6 +20,7 @@ class RegisterForm extends StatefulWidget {
   @override
   State<RegisterForm> createState() => _RegisterFormState();
 }
+
 class _RegisterFormState extends State<RegisterForm> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final AuthContoller authController = AuthContoller.to;
@@ -30,7 +32,6 @@ class _RegisterFormState extends State<RegisterForm> {
     return Form(
         autovalidateMode: autovalidateMode,
         key: formKey,
-    
         child: Column(
           children: [
             CustomFromTextFiled(
@@ -75,19 +76,28 @@ class _RegisterFormState extends State<RegisterForm> {
             const SizedBox(
               height: HightManger.H48,
             ),
-            CustomAuthButton(
-              color: ColorManger.KHeliotrop,
-              title: StringManger.KRegister,
-              onPressed: () async {
-                if (formKey.currentState!.validate()) {
+            GetBuilder<AuthContoller>(builder: (contoller) {
+              if (authController.isLoading.value){
+             return   const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return CustomAuthButton(
+                  color: ColorManger.KHeliotrop,
+                  title: StringManger.kLogin,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
 
-                  authController.registerWithEmailAndPassword(context);
-                } else {
-                  autovalidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
-              },
-            ),
+                      authController.signInWithEmailAndPassword(context);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                );
+              }
+            }),
             const SizedBox(
               height: HightManger.H30,
             ),
