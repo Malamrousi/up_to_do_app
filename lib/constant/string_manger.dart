@@ -33,4 +33,7 @@ class StringManger {
   static const String KRegister = 'Register';
   static const String kUsername = 'Username';
   static const String kConfirmPassword = 'Confirm Password';
+  static const String kindex= 'index';
+  static const String kWhatdoyouwanttodotoday= 'What do you want to do today?';
+  static const String ktoaddyourtasks= 'Tap + to add your tasks';
 }

@@ -6,6 +6,8 @@ class WidthManger {
   static const double W327 = 327;  
   static const double W30 = 30;  
   static const double W24 = 24;  
+  static const double W42 = 42;  
+  static const double W227= 227;  
 }
 
 class HightManger {
@@ -15,6 +17,9 @@ class HightManger {
   static const double H48 = 48;
   static const double H30 = 30;
   static const double H24 = 24;
+  static const double H42 = 42;
+    static const double H227= 227;  
+
 }
 
 class PaddingManger {

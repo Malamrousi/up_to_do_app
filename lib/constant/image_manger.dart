@@ -7,4 +7,6 @@ class ImageManger {
   static const  String Kslide3 = '$asset/slide_3.png';
   static const  String Kgoogle= '$asset/google.png';
   static const  String Kfacebook= '$asset/facebook.png';
+  static const  String kprofile= '$asset/profile.png';
+  static const  String kHome= '$asset/home.png';
 }

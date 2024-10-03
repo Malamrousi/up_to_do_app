@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 //constant
-import '../../constant/image_manger.dart';
+import '../../../constant/image_manger.dart';
 import 'package:todo_app/constant/size_manger.dart';
 import 'package:todo_app/constant/route_name.dart';
 
-import '../../data/controller/auth_contoller.dart';
+import '../../../data/controller/auth_contoller.dart';
 
 class UpToDoScreen extends StatelessWidget {
   const UpToDoScreen({super.key});

@@ -11,7 +11,10 @@ class DataBaseServices {
   void createUserFireStore(UserModel user, User firebaseUser) {
     _db.doc('$userCollection/${firebaseUser.uid}').set(
       user.toJson(),
-      SetOptions(merge: true),
     );
+
   }
+
+
+  
 }
