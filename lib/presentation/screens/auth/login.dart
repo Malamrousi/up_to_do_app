@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 //constant
 //widget
-import '../../widgets/custom_app_bar.dart';
-import 'widget/login_view_body.dart';
+import 'widgets/custom_app_bar.dart';
+import 'widgets/login_view_body.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

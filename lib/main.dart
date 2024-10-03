@@ -6,12 +6,12 @@ import 'package:todo_app/constant/color_manger.dart';
 //constant
 import 'package:todo_app/constant/route_name.dart';
 //screen
-import 'package:todo_app/presentation/screen/on_boarding/Intro_screen%20.dart';
-import 'package:todo_app/presentation/screen/up_to_do.dart';
-import 'package:todo_app/presentation/screen/auth/start_screen.dart';
-import 'package:todo_app/presentation/screen/auth/register.dart';
-import 'package:todo_app/presentation/screen/home/screen/home_screen.dart';
-import 'package:todo_app/presentation/screen/auth/login.dart';
+import 'package:todo_app/presentation/screens/on_boarding/Intro_screen%20.dart';
+import 'package:todo_app/presentation/screens/up_to_do.dart';
+import 'package:todo_app/presentation/screens/auth/start_screen.dart';
+import 'package:todo_app/presentation/screens/auth/register.dart';
+import 'package:todo_app/presentation/screens/home/screen/home_screen.dart';
+import 'package:todo_app/presentation/screens/auth/login.dart';
 //controller
 
 import 'data/controller/auth_contoller.dart';

@@ -5,23 +5,24 @@ import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/constant/size_manger.dart';
 //constant
 import 'package:todo_app/constant/string_manger.dart';
-import 'package:todo_app/data/helpers/validator.dart';
+
 //widget
 import '../../../../data/controller/auth_contoller.dart';
-import '../../../widgets/custom_auth_button.dart';
-import '../../../widgets/custom_from_text_filed.dart';
+import '../../../../data/helpers/validator.dart';
+import 'custom_auth_button.dart';
+import 'custom_from_text_filed.dart';
+
 //controller
 
-class LogInForm extends StatefulWidget {
-  const LogInForm({super.key});
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
 
   @override
-  State<LogInForm> createState() => _LogInFormState();
+  State<RegisterForm> createState() => _RegisterFormState();
 }
 
-class _LogInFormState extends State<LogInForm> {
+class _RegisterFormState extends State<RegisterForm> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  // final AuthenticationController authContoller = Get.find();
   final AuthContoller authController = AuthContoller.to;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
@@ -33,6 +34,17 @@ class _LogInFormState extends State<LogInForm> {
         key: formKey,
         child: Column(
           children: [
+            CustomFromTextFiled(
+              controller: authController.nameController,
+              keyboardType: TextInputType.name,
+              label: StringManger.kUsername,
+              hintText: StringManger.KEnteryourName,
+              onSaved: (value) {
+                authController.nameController.text = value;
+              },
+              obscureText: false,
+              validator: Validator().name,
+            ),
             const SizedBox(
               height: HightManger.H48,
             ),
@@ -58,15 +70,15 @@ class _LogInFormState extends State<LogInForm> {
               onSaved: (value) {
                 authController.passwordController.text = value;
               },
-              obscureText: true,
+              obscureText: false,
               validator: Validator().password,
             ),
             const SizedBox(
               height: HightManger.H48,
             ),
             GetBuilder<AuthContoller>(builder: (contoller) {
-              if (authController.isLoading.value) {
-                return const Center(
+              if (authController.isLoading.value){
+             return   const Center(
                   child: CircularProgressIndicator(),
                 );
               } else {
@@ -85,7 +97,10 @@ class _LogInFormState extends State<LogInForm> {
                   },
                 );
               }
-            })
+            }),
+            const SizedBox(
+              height: HightManger.H30,
+            ),
           ],
         ));
   }

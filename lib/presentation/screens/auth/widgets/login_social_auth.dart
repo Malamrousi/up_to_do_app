@@ -9,7 +9,7 @@ import 'package:todo_app/constant/image_manger.dart';
 import 'package:todo_app/data/controller/auth_contoller.dart';
 
 //widget
-import '../../../widgets/social_auth_button.dart';
+import 'social_auth_button.dart';
 
 class LoginSocialAuth extends StatefulWidget {
   const LoginSocialAuth({super.key});

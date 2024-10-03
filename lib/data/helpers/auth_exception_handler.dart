@@ -3,7 +3,7 @@ import 'auth_result_status .dart';
 class AuthExceptionHandler {
   static handleException(e) {
     print(e.code);
-    var status;
+    AuthResultStatus status;
     switch (e.code) {
       case "ERROR_INVALID_EMAIL":
         status = AuthResultStatus.invalidEmail;

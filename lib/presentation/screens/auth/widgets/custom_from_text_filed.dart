@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../constant/color_manger.dart';
-import '../../constant/size_manger.dart';
+import '../../../../constant/color_manger.dart';
+import '../../../../constant/size_manger.dart';
 
 class CustomFromTextFiled extends StatefulWidget {
   const CustomFromTextFiled(

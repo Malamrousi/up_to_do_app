@@ -6,8 +6,8 @@ import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/constant/size_manger.dart';
 import 'package:todo_app/constant/route_name.dart';
 //Widget
-import '../../widgets/custom_app_bar.dart';
-import '../../widgets/custom_auth_button.dart';
+import 'widgets/custom_app_bar.dart';
+import 'widgets/custom_auth_button.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});

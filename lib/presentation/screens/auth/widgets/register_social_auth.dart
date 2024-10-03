@@ -5,7 +5,7 @@ import '../../../../constant/image_manger.dart';
 import '../../../../constant/size_manger.dart';
 import '../../../../constant/string_manger.dart';
 import '../../../../data/controller/auth_contoller.dart';
-import '../../../widgets/social_auth_button.dart';
+import 'social_auth_button.dart';
 
 class RegisterSocialAuth extends StatelessWidget {
   const RegisterSocialAuth({super.key});
@@ -24,7 +24,7 @@ class RegisterSocialAuth extends StatelessWidget {
           children: [
             SocialAuthButton(
               image: ImageManger.Kgoogle,
-              title: StringManger.KLoginwithGoogle,
+              title: StringManger.KRegisterwithGoogle,
               onPressed: () async {
                 await authController.signInWithGoogle();
               },
@@ -34,7 +34,7 @@ class RegisterSocialAuth extends StatelessWidget {
             ),
             SocialAuthButton(
               image: ImageManger.Kfacebook,
-              title: StringManger.KLoginwithFacebook,
+              title: StringManger.KRegisterwithFacebook,
               onPressed: () async {
                 await authController.signInWithFacebook();
               },

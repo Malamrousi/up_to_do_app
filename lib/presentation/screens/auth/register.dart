@@ -1,8 +1,8 @@
 //package
 import 'package:flutter/material.dart';
 //widget
-import '../../widgets/custom_app_bar.dart';
-import 'widget/register_view_body.dart';
+import 'widgets/custom_app_bar.dart';
+import 'widgets/register_view_body.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

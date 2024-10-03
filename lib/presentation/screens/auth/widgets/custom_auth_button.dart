@@ -1,7 +1,7 @@
 //package
 import 'package:flutter/material.dart';
 //constant
-import '../../constant/size_manger.dart';
+import '../../../../constant/size_manger.dart';
 import 'package:todo_app/constant/color_manger.dart';
 
 class CustomAuthButton extends StatelessWidget {

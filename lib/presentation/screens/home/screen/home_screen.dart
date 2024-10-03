@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       
       appBar: AppBar(
-        actions: [IconButton(onPressed: authController.signOut, icon: Icon(Icons.logout ,
+        actions: [IconButton(onPressed: authController.signOut, icon: const Icon(Icons.logout ,
         size: 32,
         color: Colors.white,))],
       ),

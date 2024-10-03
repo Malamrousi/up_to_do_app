@@ -1,8 +1,8 @@
 //package
 import 'package:flutter/material.dart';
 //constant
-import '../../constant/color_manger.dart';
-import '../../constant/size_manger.dart';
+import '../../../../constant/color_manger.dart';
+import '../../../../constant/size_manger.dart';
 
 
 class SocialAuthButton extends StatelessWidget {

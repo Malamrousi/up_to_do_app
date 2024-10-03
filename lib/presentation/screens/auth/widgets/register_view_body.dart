@@ -9,7 +9,7 @@ import 'package:todo_app/constant/string_manger.dart';
 //widget
 import 'custom_divider.dart';
 import 'register_social_auth.dart';
-import 'package:todo_app/presentation/screen/auth/widget/register_form_filed.dart';
+import 'package:todo_app/presentation/screens/auth/widgets/register_form_filed.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});

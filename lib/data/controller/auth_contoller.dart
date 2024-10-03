@@ -1,10 +1,9 @@
 //PACKAGE
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-
 //CONSTANT
 import 'package:todo_app/constant/route_name.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -13,6 +12,7 @@ import 'package:todo_app/constant/color_manger.dart';
 import 'package:todo_app/data/models/user_model.dart';
 //helpers
 import '../helpers/auth_exception_handler.dart';
+//firebase
 
 class AuthContoller extends GetxController {
   static AuthContoller to = Get.find();
@@ -21,6 +21,8 @@ class AuthContoller extends GetxController {
   TextEditingController passwordController = TextEditingController();
 
   final FirebaseAuth auth = FirebaseAuth.instance;
+
+  final String userCollection = 'Users';
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Rx<User?> firebaseUser = Rx<User?>(null);
@@ -80,12 +82,12 @@ class AuthContoller extends GetxController {
               email: emailController.text.trim(),
               password: passwordController.text.trim())
           .then((result) {
-        UserModel _newUser = UserModel(
+        UserModel newUser = UserModel(
             name: nameController.text,
             email: result.user!.email!,
             uid: result.user!.uid);
 
-        _createUserFireStore(_newUser, result.user!);
+        createUserFireStore(newUser, result.user!);
       });
     } on FirebaseAuthException catch (e) {
       var authStatus = AuthExceptionHandler.handleException(e);
@@ -99,17 +101,14 @@ class AuthContoller extends GetxController {
   }
 
   Future signInWithGoogle() async {
+          isLoading.value = true;
+
     try {
-      isLoading.value = true;
+          isLoading.value = true;
 
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
       if (googleUser == null) {
-        Get.snackbar('Sign In', 'Login cancelled by user.',
-            snackPosition: SnackPosition.TOP,
-            duration: const Duration(seconds: 3),
-            backgroundColor: Get.theme.snackBarTheme.backgroundColor,
-            colorText: ColorManger.KWhiteColor);
         return;
       }
 
@@ -124,13 +123,13 @@ class AuthContoller extends GetxController {
       final UserCredential result =
           await FirebaseAuth.instance.signInWithCredential(credential);
 
-      UserModel _newUser = UserModel(
+      UserModel newUser = UserModel(
         name: result.user?.displayName ?? 'No Name',
         email: result.user?.email ?? 'No Email',
         uid: result.user!.uid,
       );
 
-      _createUserFireStore(_newUser, result.user!);
+      createUserFireStore(newUser, result.user!);
     } catch (e) {
       SnackBar(e);
     } finally {
@@ -157,13 +156,13 @@ class AuthContoller extends GetxController {
 
       final userData = await FacebookAuth.instance.getUserData();
 
-      UserModel _newUser = UserModel(
-        name: result.user?.displayName ?? userData['name'] ?? 'No Name',
+      UserModel newUser = UserModel(
+        name: result.user?.displayName ?? userData['name'] ?? 'No name',
         email: result.user?.email ?? userData['email'] ?? 'No Email',
         uid: result.user!.uid,
       );
 
-      _createUserFireStore(_newUser, result.user!);
+      createUserFireStore(newUser, result.user!);
     } catch (e) {
       SnackBar(e);
     } finally {
@@ -176,12 +175,13 @@ class AuthContoller extends GetxController {
         snackPosition: SnackPosition.TOP,
         duration: const Duration(seconds: 3),
         backgroundColor: Get.theme.snackBarTheme.backgroundColor,
-        colorText: Get.theme.snackBarTheme.actionTextColor);
+        colorText: ColorManger.KWhiteColor);
   }
 
-  void _createUserFireStore(UserModel user, User firebaseuser) {
-    _db.doc('$UserCollection/${firebaseuser.uid}').set(user.toJson());
-    update();
+  void createUserFireStore(UserModel user, User firebaseUser) {
+    _db.doc('$userCollection/${firebaseUser.uid}').set(
+          user.toJson(),
+        );
   }
 
   Future<void> signOut() async {
