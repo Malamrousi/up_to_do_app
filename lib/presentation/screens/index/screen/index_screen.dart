@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../../../constant/color_manger.dart';
 import '../widget/custom_botton_navigation_bar.dart';
-import '../widget/home_view_body.dart';
+import '../widget/index_view_body.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class IndexScreen extends StatefulWidget {
+  const IndexScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<IndexScreen> createState() => _IndexScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _IndexScreenState extends State<IndexScreen> {
   int _selectedIndex = 0;
 
   // Pages corresponding to each \
   static final List<Widget> _pages = <Widget>[
-    const HomeViewBody(),
+    const IndexViewBody(),
     const Center(
         child: Text(
       'Calendar Page',

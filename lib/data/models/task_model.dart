@@ -22,11 +22,11 @@ class TaskModel {
     required this.date,
   });
 
-  factory TaskModel.fromJsom(data) {
+  factory TaskModel.fromJson(data) {
     return TaskModel(
       title: data['title'],
       description: data['description'],
-      category: data['category'],
+      category: CategoryModel.fromJson(data['category']),
       isDone: data['is_done'],
       taskPriority: data['task_priority'],
       startTime: DateTime.parse(data['startTime']),
@@ -35,11 +35,11 @@ class TaskModel {
     );
   }
 
-  Map<String, dynamic> toJason() {
+  Map<String, dynamic> toJson() {
     return {
       'title': title,
       'description': description,
-      'category': category,
+      'category': category.toJson(),
       'is_done': isDone,
       'task_priority': taskPriority,
       'startTime': startTime,
@@ -47,6 +47,4 @@ class TaskModel {
       'date': date
     };
   }
-
-
 }

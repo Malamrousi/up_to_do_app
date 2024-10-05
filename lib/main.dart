@@ -10,7 +10,7 @@ import 'package:todo_app/presentation/screens/on_boarding/Intro_screen%20.dart';
 import 'package:todo_app/presentation/screens/on_boarding/up_to_do.dart';
 import 'package:todo_app/presentation/screens/auth/start_screen.dart';
 import 'package:todo_app/presentation/screens/auth/register.dart';
-import 'package:todo_app/presentation/screens/home/screen/home_screen.dart';
+import 'package:todo_app/presentation/screens/index/screen/index_screen.dart';
 import 'package:todo_app/presentation/screens/auth/login.dart';
 //controller
 
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
             name: RouteName.KRegisterScreen,
             page: () => const RegisterScreen()),
         GetPage(name: RouteName.KLoginScreen, page: () => const LoginScreen()),
-        GetPage(name: RouteName.kHomeScreen, page: () => const HomeScreen()),
+        GetPage(name: RouteName.kHomeScreen, page: () => const IndexScreen()),
         GetPage(name: RouteName.KupToDo, page: () => const UpToDoScreen()),
       ],
       theme: ThemeData(

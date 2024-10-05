@@ -3,21 +3,21 @@ import 'package:todo_app/constant/color_manger.dart';
 //CONSTANT
 import 'package:todo_app/constant/image_manger.dart';
 import 'package:todo_app/constant/string_manger.dart';
-import 'package:todo_app/presentation/screens/home/widget/custom_app_bar.dart';
+import 'package:todo_app/presentation/screens/index/widget/custom_app_bar.dart';
 
 import '../../../../constant/size_manger.dart';
 
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+class IndexViewBody extends StatelessWidget {
+  const IndexViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomAppBar(),
+          const CustomAppBar(),
         const  Spacer(
             flex: 2,
           ),
