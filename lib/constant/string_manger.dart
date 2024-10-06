@@ -36,4 +36,5 @@ class StringManger {
   static const String kindex= 'index';
   static const String kWhatdoyouwanttodotoday= 'What do you want to do today?';
   static const String ktoaddyourtasks= 'Tap + to add your tasks';
+  static const String kAddtasks= 'Add Task';
 }

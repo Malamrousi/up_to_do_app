@@ -15,7 +15,6 @@ import 'package:todo_app/presentation/screens/auth/login.dart';
 //controller
 
 import 'data/controller/auth_contoller.dart';
-//controller
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
             name: RouteName.KRegisterScreen,
             page: () => const RegisterScreen()),
         GetPage(name: RouteName.KLoginScreen, page: () => const LoginScreen()),
-        GetPage(name: RouteName.kHomeScreen, page: () => const IndexScreen()),
+        GetPage(name: RouteName.kindexScreen, page: () => const IndexScreen()),
         GetPage(name: RouteName.KupToDo, page: () => const UpToDoScreen()),
       ],
       theme: ThemeData(

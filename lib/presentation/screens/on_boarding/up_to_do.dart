@@ -17,7 +17,7 @@ class UpToDoScreen extends StatelessWidget {
     final authController = Get.find<AuthContoller>();
     Future.delayed(const Duration(seconds: 1), () {
       if (authController.firebaseUser.value != null) {
-        Get.offAllNamed(RouteName.kHomeScreen); 
+        Get.offAllNamed(RouteName.kindexScreen); 
       } else {
         Get.offAllNamed(RouteName.kOnBoarding); 
       }

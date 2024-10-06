@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../constant/color_manger.dart';
+import '../widget/add_task_bottom_sheet.dart';
 import '../widget/custom_botton_navigation_bar.dart';
 import '../widget/index_view_body.dart';
 
@@ -46,7 +48,10 @@ class _IndexScreenState extends State<IndexScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your task creation logic here
+          Get.bottomSheet(
+            backgroundColor: ColorManger.kMineshaft,
+           AddTaskBottomSheet()
+          );
         },
         tooltip: 'Add Task',
         backgroundColor: ColorManger.KHeliotrop,

@@ -47,7 +47,7 @@ class AuthContoller extends GetxController {
 
   void _handleAuthChanged(User? user) {
     if (user != null) {
-      Get.offAllNamed(RouteName.kHomeScreen);
+      Get.offAllNamed(RouteName.kindexScreen);
     }
   }
 
