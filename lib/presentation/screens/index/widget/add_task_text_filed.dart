@@ -25,7 +25,7 @@ class AddTaskTextFiled extends StatelessWidget {
         hintText: hintText,
         hintStyle: const TextStyle(color: Color(0xffAFAFAF), fontSize: 18),
         focusedBorder: const OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xff979797))),
+            borderSide: BorderSide(color: Color(0xff979797))),
         enabledBorder: InputBorder.none,
       ),
     );

@@ -22,7 +22,7 @@ class _TimeOfTaskState extends State<TimeOfTask> {
       builder: (context, Widget? child) {
         return Theme(
           data: ThemeData.dark().copyWith(
-            dialogBackgroundColor: Color(0xff363636),
+            dialogBackgroundColor: const Color(0xff363636),
           ),
           child: child!,
         );
@@ -46,7 +46,7 @@ class _TimeOfTaskState extends State<TimeOfTask> {
       builder: (context, Widget? child) {
         return Theme(
           data: ThemeData.dark().copyWith(
-            dialogBackgroundColor: Color(0xff363636),
+            dialogBackgroundColor: const Color(0xff363636),
           ),
           child: child!,
         );

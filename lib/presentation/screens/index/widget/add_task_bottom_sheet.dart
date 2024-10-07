@@ -13,7 +13,7 @@ class AddTaskBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),

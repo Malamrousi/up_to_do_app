@@ -4,9 +4,9 @@ import 'package:todo_app/data/models/category_model.dart';
 import 'package:todo_app/data/models/task_model.dart';
 
 class DataBaseServices {
-  static final String userCollection = 'Users';
-  static final String taskCollection = 'Task';
-  static final String CategoryCollection = 'Category';
+  static const String userCollection = 'Users';
+  static const String taskCollection = 'Task';
+  static const String CategoryCollection = 'Category';
   static final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   static CollectionReference<TaskModel> getTaskCollection(User firebaseUser) {

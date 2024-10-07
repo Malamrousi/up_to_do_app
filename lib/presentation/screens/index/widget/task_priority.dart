@@ -59,7 +59,7 @@ class TaskPriorityItems extends StatelessWidget {
                     return GestureDetector(
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0xff272727),
+                          color: const Color(0xff272727),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Center(
