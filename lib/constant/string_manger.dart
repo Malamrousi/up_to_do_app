@@ -37,4 +37,8 @@ class StringManger {
   static const String kWhatdoyouwanttodotoday= 'What do you want to do today?';
   static const String ktoaddyourtasks= 'Tap + to add your tasks';
   static const String kAddtasks= 'Add Task';
+  static const String kCreatenewcategory= 'Create new category';
+  static const String kCategoryname = 'Category name';
+  static const String kCategoryicon  = 'Category icon :';
+  static const String kCategorycolor = 'Category color :';
 }

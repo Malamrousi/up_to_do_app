@@ -12,6 +12,10 @@ import 'package:todo_app/presentation/screens/auth/start_screen.dart';
 import 'package:todo_app/presentation/screens/auth/register.dart';
 import 'package:todo_app/presentation/screens/index/screen/index_screen.dart';
 import 'package:todo_app/presentation/screens/auth/login.dart';
+import 'package:todo_app/presentation/screens/category/screen/category_screens.dart';
+import 'package:flutter_iconpicker/flutter_iconpicker.dart';
+
+
 //controller
 
 import 'data/controller/auth_contoller.dart';
@@ -19,6 +23,8 @@ import 'data/controller/auth_contoller.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+
   Get.put(AuthContoller());
   runApp(const MyApp());
 }
@@ -45,6 +51,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: RouteName.KLoginScreen, page: () => const LoginScreen()),
         GetPage(name: RouteName.kindexScreen, page: () => const IndexScreen()),
         GetPage(name: RouteName.KupToDo, page: () => const UpToDoScreen()),
+        GetPage(name: RouteName.kCategoryScreens, page: () => const CategoryScreens()),
       ],
       theme: ThemeData(
           appBarTheme: const AppBarTheme(

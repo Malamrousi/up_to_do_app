@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/constant/color_manger.dart';
-import 'package:todo_app/data/models/catgeroy_model.dart';
+import 'package:todo_app/constant/route_name.dart';
+import 'package:todo_app/data/models/catgeroy_model_items.dart';
 
 import 'custom_button.dart';
 
@@ -94,7 +95,9 @@ class TaskPriorityItems extends StatelessWidget {
             CustomButton(
               width: 289,
               hight: 48,
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(RouteName.kCategoryScreens);
+              },
               TextColor: ColorManger.KWhiteColor,
               color: ColorManger.KHeliotrop,
               title: 'Add Category',

@@ -44,8 +44,7 @@ class DataBaseServices {
                 CategoryModel.fromJson(snapshot.data()!),
             toFirestore: (data, _) => data.toJson());
   }
-
-  Future<void> addCategory(
+ Future<void> addCategory(
     CategoryModel categoryModel,
     User firebaseUser,
   ) async {

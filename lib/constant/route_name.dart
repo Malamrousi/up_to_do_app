@@ -6,7 +6,7 @@ class RouteName {
   static const String KLoginScreen = '/LoginScreen';
   static const String kindexScreen= '/indexScreen';
   static const String kuPToDoAPP= '/uPToDoAPP';
-  static const String kVerfiyYourEmail= '/VerfiyYourEmail';
+  static const String kCategoryScreens= '/CategoryScreens';
 
 
 }

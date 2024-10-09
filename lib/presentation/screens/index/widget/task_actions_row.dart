@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //widget
 import 'category_items.dart';
+import 'send_task_button.dart';
 import 'task_priority.dart';
 import 'time_of_task.dart';
 
@@ -20,6 +21,8 @@ class _TaskActionsRowState extends State<TaskActionsRow> {
           TimeOfTask(),
           CategoryItems(),
           TaskPriority(),
+          Spacer(flex: 1,),
+          SendTaskButton(),
         ],
       ),
     );

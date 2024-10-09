@@ -5,9 +5,14 @@ import 'package:todo_app/constant/image_manger.dart';
 import '../../../../constant/color_manger.dart';
 import 'custom_button.dart';
 
-class TaskPriority extends StatelessWidget {
+class TaskPriority extends StatefulWidget {
   const TaskPriority({super.key});
 
+  @override
+  State<TaskPriority> createState() => _TaskPriorityState();
+}
+
+class _TaskPriorityState extends State<TaskPriority> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -21,9 +26,15 @@ class TaskPriority extends StatelessWidget {
   }
 }
 
-class TaskPriorityItems extends StatelessWidget {
+class TaskPriorityItems extends StatefulWidget {
   const TaskPriorityItems({super.key});
 
+  @override
+  State<TaskPriorityItems> createState() => _TaskPriorityItemsState();
+}
+
+class _TaskPriorityItemsState extends State<TaskPriorityItems> {
+  int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,28 +68,38 @@ class TaskPriorityItems extends StatelessWidget {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0xff272727),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: SizedBox(
-                            width: 64,
-                            height: 64,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  ImageManger.kflag,
-                                ),
-                                Text(
-                                  '${index + 1}',
-                                  style: const TextStyle(
-                                      color: ColorManger.KWhiteColor,
-                                      fontSize: 16),
-                                )
-                              ],
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            activeIndex = index;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: activeIndex==index
+                                ? ColorManger.KHeliotrop
+                                : ColorManger.kMineshaft,
+                                
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: SizedBox(
+                              width: 64,
+                              height: 64,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    ImageManger.kflag,
+                                  ),
+                                  Text(
+                                    '${index + 1}',
+                                    style: const TextStyle(
+                                        color: ColorManger.KWhiteColor,
+                                        fontSize: 16),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -99,7 +120,7 @@ class TaskPriorityItems extends StatelessWidget {
                   title: 'Cancel',
                 ),
                 CustomButton(
-                    width: 153,
+                  width: 153,
                   hight: 48,
                   onPressed: () {},
                   TextColor: ColorManger.KWhiteColor,
