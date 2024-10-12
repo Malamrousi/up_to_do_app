@@ -2,19 +2,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/constant/color_manger.dart';
-//constant
-import 'package:todo_app/constant/route_name.dart';
-//screen
-import 'package:todo_app/presentation/screens/on_boarding/Intro_screen%20.dart';
-import 'package:todo_app/presentation/screens/on_boarding/up_to_do.dart';
-import 'package:todo_app/presentation/screens/auth/start_screen.dart';
-import 'package:todo_app/presentation/screens/auth/register.dart';
-import 'package:todo_app/presentation/screens/index/screen/index_screen.dart';
-import 'package:todo_app/presentation/screens/auth/login.dart';
-import 'package:todo_app/presentation/screens/category/screen/category_screens.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
+import 'package:todo_app/core/utils/color_manger.dart';
 
+//constant
+import 'package:todo_app/core/utils/route_name.dart';
+
+//screen
+import 'package:todo_app/presentation/on_boarding/Intro_screen%20.dart';
+import 'package:todo_app/presentation/on_boarding/up_to_do.dart';
+import 'package:todo_app/presentation/auth/screen/start_screen.dart';
+import 'package:todo_app/presentation/auth/screen/register.dart';
+import 'package:todo_app/presentation/index/screen/index_screen.dart';
+import 'package:todo_app/presentation/auth/screen/login.dart';
+import 'package:todo_app/presentation/category/screen/category_screens.dart';
 
 //controller
 
@@ -23,7 +23,6 @@ import 'data/controller/auth_contoller.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
 
   Get.put(AuthContoller());
   runApp(const MyApp());
@@ -38,27 +37,29 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const UpToDoScreen(),
       getPages: [
-        GetPage(name: RouteName.KupToDo, page: () => const UpToDoScreen()),
+        GetPage(name: RouteName.kUpToDo, page: () => const UpToDoScreen()),
         GetPage(name: RouteName.kOnBoarding, page: () => const IntroScreen()),
         GetPage(name: RouteName.kOnBoarding, page: () => const IntroScreen()),
         GetPage(
-          name: RouteName.KStartScreen,
+          name: RouteName.kStartScreen,
           page: () => const StartScreen(),
         ),
         GetPage(
-            name: RouteName.KRegisterScreen,
+            name: RouteName.kRegisterScreen,
             page: () => const RegisterScreen()),
-        GetPage(name: RouteName.KLoginScreen, page: () => const LoginScreen()),
-        GetPage(name: RouteName.kindexScreen, page: () => const IndexScreen()),
-        GetPage(name: RouteName.KupToDo, page: () => const UpToDoScreen()),
-        GetPage(name: RouteName.kCategoryScreens, page: () => const CategoryScreens()),
+        GetPage(name: RouteName.kLoginScreen, page: () => const LoginScreen()),
+        GetPage(name: RouteName.kIndexScreen, page: () => const IndexScreen()),
+        GetPage(name: RouteName.kUpToDo, page: () => const UpToDoScreen()),
+        GetPage(
+            name: RouteName.kCategoryScreens,
+            page: () => const CategoryScreens()),
       ],
       theme: ThemeData(
           appBarTheme: const AppBarTheme(
-              color: ColorManger.KPrimaryColor,
-              foregroundColor: ColorManger.KWhiteColor),
+              color: ColorManger.kPrimaryColor,
+              foregroundColor: ColorManger.kWhiteColor),
           fontFamily: 'Lato',
-          scaffoldBackgroundColor: ColorManger.KPrimaryColor),
+          scaffoldBackgroundColor: ColorManger.kPrimaryColor),
     );
   }
 }

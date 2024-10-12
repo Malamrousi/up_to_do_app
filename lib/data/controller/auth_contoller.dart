@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 //CONSTANT
-import 'package:todo_app/constant/route_name.dart';
+import 'package:todo_app/core/utils/route_name.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:todo_app/constant/color_manger.dart';
+import 'package:todo_app/core/utils/color_manger.dart';
 //models
 import 'package:todo_app/data/models/user_model.dart';
 //helpers
@@ -47,7 +47,7 @@ class AuthContoller extends GetxController {
 
   void _handleAuthChanged(User? user) {
     if (user != null) {
-      Get.offAllNamed(RouteName.kindexScreen);
+      Get.offAllNamed(RouteName.kIndexScreen);
     }
   }
 
@@ -175,7 +175,7 @@ class AuthContoller extends GetxController {
         snackPosition: SnackPosition.TOP,
         duration: const Duration(seconds: 3),
         backgroundColor: Get.theme.snackBarTheme.backgroundColor,
-        colorText: ColorManger.KWhiteColor);
+        colorText: ColorManger.kWhiteColor);
   }
 
   void createUserFireStore(UserModel user, User firebaseUser) {
@@ -191,6 +191,6 @@ class AuthContoller extends GetxController {
     await GoogleSignIn().signOut();
     await auth.signOut();
     await FacebookAuth.instance.logOut();
-    Get.offAllNamed(RouteName.KStartScreen);
+    Get.offAllNamed(RouteName.kStartScreen);
   }
 }

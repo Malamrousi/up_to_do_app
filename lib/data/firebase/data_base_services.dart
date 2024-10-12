@@ -4,51 +4,65 @@ import 'package:todo_app/data/models/category_model.dart';
 import 'package:todo_app/data/models/task_model.dart';
 
 class DataBaseServices {
-  static const String userCollection = 'Users';
-  static const String taskCollection = 'Task';
-  static const String CategoryCollection = 'Category';
+  static const String _userCollection = 'Users';
+  static const String _taskCollection = 'Task';
+  static const String _categoryCollection = 'Category';
+
   static final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  static CollectionReference<TaskModel> getTaskCollection(User firebaseUser) {
+  static late User currentUser;
+  // task collection
+
+  static CollectionReference<TaskModel> getTaskCollection() {
     return _db
-        .collection(userCollection)
-        .doc(firebaseUser.uid)
-        .collection(taskCollection)
+        .collection(_userCollection)
+        .doc(currentUser.uid)
+        .collection(_taskCollection)
         .withConverter<TaskModel>(
-            fromFirestore: (snapshot, _) =>
-                TaskModel.fromJson(snapshot.data()!),
+            fromFirestore: (snapshot, _) => TaskModel.fromJson(snapshot.data()),
             toFirestore: (task, _) => task.toJson());
   }
 
-  Future<void> addTask(
-    TaskModel taskModel,
-    User firebaseUser,
-  ) async {
-    var docRef = getTaskCollection(firebaseUser).doc();
-    return docRef.set(taskModel);
-  }
+  // category collection
 
-  //deleteTask
-  Future<void> deleteTask(User firebaseUser, String docId) async {
-    await getTaskCollection(firebaseUser).doc(docId).delete();
-  }
-
-  static CollectionReference<CategoryModel> getCategoryCollection(
-      User firebaseUser) {
+  static CollectionReference<CategoryModel> getCategoryCollection() {
     return _db
-        .collection(userCollection)
-        .doc(firebaseUser.uid)
-        .collection(CategoryCollection)
+        .collection(_userCollection)
+        .doc(currentUser.uid)
+        .collection(_categoryCollection)
         .withConverter(
             fromFirestore: (snapshot, _) =>
                 CategoryModel.fromJson(snapshot.data()!),
-            toFirestore: (data, _) => data.toJson());
+            toFirestore: (category, _) => category.toJson());
   }
- Future<void> addCategory(
-    CategoryModel categoryModel,
-    User firebaseUser,
-  ) async {
-    var docRef = getCategoryCollection(firebaseUser).doc();
-    return docRef.set(categoryModel);
+
+  //ad task
+
+  Future<void> addTask({required TaskModel taskModel}) async {
+    DocumentReference<TaskModel> docRef = getTaskCollection().doc();
+    return await docRef.set(taskModel);
+  }
+
+  //get task
+
+  Stream<TaskModel?> getTask({required String taskId}) {
+    DocumentReference<TaskModel> docRef = getTaskCollection().doc(taskId);
+    return docRef.snapshots().map((snapshot) => snapshot.data());
+  }
+
+  // add Category
+
+  Future<void> addCategory({required CategoryModel categoryModel}) async {
+    DocumentReference<CategoryModel> docRef = getCategoryCollection().doc();
+
+    return await docRef.set(categoryModel);
+  }
+
+  // get Category
+
+  Future<CategoryModel?> getCategory({required String categoryId}) async {
+    DocumentSnapshot<CategoryModel> snapshot =
+        await getCategoryCollection().doc(categoryId).get();
+    return snapshot.data();
   }
 }

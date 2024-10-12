@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/constant/color_manger.dart';
+import 'package:todo_app/core/utils/color_manger.dart';
 
 Future<IconData?> showIconPicker(
     {required BuildContext context, IconData? defalutIcon}) async {
@@ -86,7 +86,7 @@ final List<IconData> allIcons = [
             backgroundColor: ColorManger.kMineshaft,
             title: const Text(
               'Pick an Icon',
-              style: TextStyle(color: ColorManger.KWhiteColor),
+              style: TextStyle(color: ColorManger.kWhiteColor),
             ),
             content: Container(
               width: 320,
@@ -107,8 +107,8 @@ final List<IconData> allIcons = [
                           child: IconButton(
                             // give the selected icon a different color
                             color: selectedIcon == allIcons[index]
-                                ? ColorManger.KHeliotrop
-                                : ColorManger.KWhiteColor,
+                                ? ColorManger.kHeliotrop
+                                : ColorManger.kWhiteColor,
                             iconSize: 30,
                             icon: Icon(
                               allIcons[index],

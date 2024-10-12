@@ -14,7 +14,7 @@ class Validator {
   }
 
   String? password(String? value) {
-    String pattern = r'^.{6,}$';  // Requires at least 6 characters
+    String pattern = r'^.{6,}$'; // Requires at least 6 characters
     RegExp regex = RegExp(pattern);
     if (value == null || value.isEmpty) {
       return 'Password field cannot be empty';
