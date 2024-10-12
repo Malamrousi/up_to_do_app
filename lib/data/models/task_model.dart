@@ -5,20 +5,20 @@ class TaskModel {
   final String title;
   final String description;
   final CategoryModel category;
-  bool isDone = false;
+  bool? isDone ;
   final int taskPriority;
   final DateTime startTime;
-  final DateTime endTime;
+  final DateTime? endTime;
   final DateTime date;
 
   TaskModel({
     required this.title,
     required this.description,
     required this.category,
-    required this.isDone,
+     this.isDone=false,
     required this.taskPriority,
     required this.startTime,
-    required this.endTime,
+     this.endTime,
     required this.date,
   });
 
