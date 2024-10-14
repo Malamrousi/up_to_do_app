@@ -43,11 +43,11 @@ class DataBaseServices {
     return await docRef.set(taskModel);
   }
 
-  //get task
-  Stream<TaskModel?> getTask({required String taskId}) {
-    DocumentReference<TaskModel> docRef = getTaskCollection().doc(taskId);
-    return docRef.snapshots().map((snapshot) => snapshot.data());
-  }
+  // //get task
+  // Stream<TaskModel?> getTask({required String taskId}) {
+  //   DocumentReference<TaskModel> docRef = getTaskCollection().doc(taskId);
+  //   return docRef.snapshots().map((snapshot) => snapshot.data());
+  // }
 
   // add Category
   Future<void> addCategory({required CategoryModel categoryModel}) async {
@@ -78,4 +78,6 @@ class DataBaseServices {
     }
     return await docRef.update(updatedData);
   }
+
+
 }
