@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' show CollectionReference, DocumentReference, DocumentSnapshot, FirebaseFirestore;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todo_app/data/models/category_model.dart';
 import 'package:todo_app/data/models/task_model.dart';
@@ -10,8 +10,7 @@ class DataBaseServices {
 
   static final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  static late User _currentUser;
-
+static User get _currentUser => FirebaseAuth.instance.currentUser!;
   // task collection
 
   static CollectionReference<TaskModel> getTaskCollection() {

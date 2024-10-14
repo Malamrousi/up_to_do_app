@@ -30,12 +30,15 @@ class AuthContoller extends GetxController {
   final String UserCollection = 'Users';
   @override
   void onReady() {
-    ever(firebaseUser, _handleAuthChanged);
-
-    firebaseUser.bindStream(user);
-
     super.onReady();
+
+    firebaseUser.bindStream(auth.authStateChanges());
+        ever(firebaseUser, _handleAuthChanged);
+
+
   }
+
+
 
   @override
   void onClose() {
@@ -73,7 +76,7 @@ class AuthContoller extends GetxController {
     }
   }
 
-  registerWithEmailAndPassword(BuildContext contex) async {
+  registerWithEmailAndPassword(BuildContext context) async {
     try {
       isLoading.value = true;
 

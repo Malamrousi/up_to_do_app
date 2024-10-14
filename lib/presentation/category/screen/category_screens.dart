@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 // constant
 import 'package:todo_app/core/utils/color_manger.dart';
+import 'package:todo_app/core/utils/route_name.dart';
 import 'package:todo_app/core/utils/string_manger.dart';
+import 'package:todo_app/data/models/category_model.dart';
 import 'package:todo_app/presentation/category/widget/custom_Icon_picker.dart';
 import 'package:todo_app/presentation/category/widget/custom_category_color.dart';
 import 'package:todo_app/presentation/category/widget/custom_button.dart';
+import '../../../data/controller/category_controller.dart';
 import '../widget/custom_category_text_filed.dart';
+import 'package:get/get.dart';
 
 class CategoryScreens extends StatefulWidget {
   const CategoryScreens({super.key});
@@ -15,70 +19,103 @@ class CategoryScreens extends StatefulWidget {
 }
 
 class _CategoryScreensState extends State<CategoryScreens> {
+  final TextEditingController categoryNameController=TextEditingController();
+  IconData? _iconData;
+
+  Color? _selectedColor = Colors.blue;
+
+  final CategoryController categoryController = Get.find<CategoryController>();
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 StringManger.kCreateNewCategory,
                 style: TextStyle(
                     color: ColorManger.kWhiteColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 StringManger.kCategoryName,
                 style: TextStyle(
                   color: ColorManger.kWhiteColor,
                   fontSize: 16,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              CustomCategoryTextFiled(),
-              SizedBox(
+              CustomCategoryTextFiled(categoryName: categoryNameController),
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 StringManger.kCategoryIcon,
                 style: TextStyle(
                   color: ColorManger.kWhiteColor,
                   fontSize: 16,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              IconPicker(),
-              SizedBox(
+              IconPicker(
+                onIconPicked: (icon) {
+                  setState(() {
+                    _iconData = icon;
+                  });
+                },
+              ),
+              const SizedBox(
                 height: 20,
               ),
-              CustomCategoryColor(),
-              Spacer(),
+              CustomCategoryColor(
+                colorPicked: (color) {
+                  setState(() {
+                    _selectedColor = color;
+                  });
+                },
+              ),
+              const Spacer(),
               Row(
                 children: [
                   CustomButton(
+                    onPressed: () {
+                      Get.back();
+                    },
                     title: 'Cancel',
                     TextColor: ColorManger.kHeliotrop,
                   ),
                   CustomButton(
+                    onPressed: () {
+                      if (
+                          _iconData != null) {
+                        final newCategory = CategoryModel(
+                            categoryName: categoryNameController.text,
+                            icon: _iconData.toString(),
+                            color: _selectedColor!.value.toString());
+                        categoryController.addCategories(newCategory);
+                        Get.toNamed(RouteName.kIndexScreen);
+                      }
+                  
+                    },
                     title: 'Create Category',
                     TextColor: ColorManger.kWhiteColor,
                     color: ColorManger.kHeliotrop,
                   ),
-
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],

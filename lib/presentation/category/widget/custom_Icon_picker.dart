@@ -3,7 +3,9 @@ import 'package:todo_app/core/utils/color_manger.dart';
 import 'package:todo_app/services/icon_picker.dart';
 
 class IconPicker extends StatefulWidget {
-  const IconPicker({super.key});
+  const IconPicker({super.key, required this.onIconPicked});
+
+  final void Function(IconData icon) onIconPicked;
 
   @override
   State<IconPicker> createState() => _IconPickerState();
@@ -16,12 +18,16 @@ class _IconPickerState extends State<IconPicker> {
     return GestureDetector(
       onTap: () async {
         final IconData? result = await showIconPicker(
-          context: context, 
+          context: context,
           defalutIcon: _selectedIcon,
         );
-        setState(() {
-          _selectedIcon = result;
-        });
+
+        if (result != null) {
+          setState(() {
+            _selectedIcon = result;
+          });
+        }
+        widget.onIconPicked(_selectedIcon!);
       },
       child: Container(
         width: _selectedIcon == null ? 154 : 48,

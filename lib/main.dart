@@ -6,6 +6,7 @@ import 'package:todo_app/core/utils/color_manger.dart';
 
 //constant
 import 'package:todo_app/core/utils/route_name.dart';
+import 'package:todo_app/data/controller/task_controller.dart';
 
 //screen
 import 'package:todo_app/presentation/on_boarding/Intro_screen%20.dart';
@@ -19,12 +20,16 @@ import 'package:todo_app/presentation/category/screen/category_screens.dart';
 //controller
 
 import 'data/controller/auth_contoller.dart';
+import 'data/controller/category_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(); 
 
   Get.put(AuthContoller());
+  Get.put(CategoryController());
+  Get.put(TaskController());
+  
   runApp(const MyApp());
 }
 
@@ -34,8 +39,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
       home: const UpToDoScreen(),
+
+      debugShowCheckedModeBanner: false,
       getPages: [
         GetPage(name: RouteName.kUpToDo, page: () => const UpToDoScreen()),
         GetPage(name: RouteName.kOnBoarding, page: () => const IntroScreen()),

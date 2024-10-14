@@ -3,7 +3,9 @@ import 'package:todo_app/core/utils/color_manger.dart';
 import 'package:todo_app/core/utils/string_manger.dart';
 
 class CustomCategoryColor extends StatefulWidget {
-  const CustomCategoryColor({super.key});
+  const CustomCategoryColor({super.key, required this.colorPicked});
+
+  final void Function(Color color) colorPicked;
 
   @override
   State<CustomCategoryColor> createState() => _CustomCategoryColorState();
@@ -29,7 +31,7 @@ class _CustomCategoryColorState extends State<CustomCategoryColor> {
   ];
 
   Color selectedColor = const Color(0xFFCCFF80);
-  
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -47,8 +49,7 @@ class _CustomCategoryColorState extends State<CustomCategoryColor> {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal, // Enable horizontal scrolling
           child: Row(
-            children: List.generate(
-              catgeroyColor.length, (index) {
+            children: List.generate(catgeroyColor.length, (index) {
               final color = catgeroyColor[index];
 
               return GestureDetector(
@@ -56,13 +57,18 @@ class _CustomCategoryColorState extends State<CustomCategoryColor> {
                   setState(() {
                     selectedColor = color; // Update selected color on tap
                   });
+
+                  widget.colorPicked(selectedColor);
                 },
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0), // Space between circles
+                  margin: const EdgeInsets.symmetric(
+                      horizontal: 8.0), // Space between circles
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: selectedColor == color ? Colors.white : Colors.transparent,
+                      color: selectedColor == color
+                          ? Colors.white
+                          : Colors.transparent,
                       width: 3.0, // Highlight selected color with border
                     ),
                   ),

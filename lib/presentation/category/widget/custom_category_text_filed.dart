@@ -3,11 +3,14 @@ import 'package:todo_app/core/utils/color_manger.dart';
 import 'package:todo_app/core/utils/string_manger.dart';
 
 class CustomCategoryTextFiled extends StatelessWidget {
-  const CustomCategoryTextFiled({super.key});
+  const CustomCategoryTextFiled({super.key, required this.categoryName});
+
+  final TextEditingController categoryName;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: categoryName,
       autofocus: true,
       validator: (value) {
         if (value == null || value.isEmpty) {

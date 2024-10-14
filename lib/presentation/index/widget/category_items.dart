@@ -4,7 +4,9 @@ import 'package:todo_app/core/utils/color_manger.dart';
 import 'package:todo_app/core/utils/route_name.dart';
 import 'package:todo_app/data/models/catgeroy_model_items.dart';
 
-import 'custom_button.dart';
+import '../../../data/controller/category_controller.dart';
+import '../../../data/models/category_model.dart';
+import '../../category/widget/custom_button.dart';
 
 class CategoryItems extends StatelessWidget {
   const CategoryItems({super.key});
@@ -14,7 +16,7 @@ class CategoryItems extends StatelessWidget {
     return IconButton(
         onPressed: () {
           Get.bottomSheet(
-            const TaskPriorityItems(),
+            const TaskCategoryItems(),
           );
         },
         icon: const Icon(
@@ -25,8 +27,18 @@ class CategoryItems extends StatelessWidget {
   }
 }
 
-class TaskPriorityItems extends StatelessWidget {
-  const TaskPriorityItems({super.key});
+
+
+
+class TaskCategoryItems extends StatefulWidget {
+  const TaskCategoryItems({super.key});
+
+  @override
+  State<TaskCategoryItems> createState() => _TaskCategoryItemsState();
+}
+
+class _TaskCategoryItemsState extends State<TaskCategoryItems> {
+  final CategoryController categoryController = Get.find<CategoryController>();
 
   @override
   Widget build(BuildContext context) {
@@ -54,54 +66,93 @@ class TaskPriorityItems extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Expanded(
-                child: GridView.builder(
-                    itemCount: CategoryModelItem.catgeroyModel.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10),
-                    itemBuilder: (context, index) {
+              child: Obx(() {
+                final allCategories = [
+                  ...CategoryModelItem.catgeroyModel, // الفئات الثابتة
+                  ...categoryController.categories, // الفئات القادمة من Firebase
+                ];
+
+                return GridView.builder(
+                  itemCount: allCategories.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10),
+                  itemBuilder: (context, index) {
+                    var category = allCategories[index];
+
+                    // عرض الفئات الثابتة
+                    if (category is CategoryModelItem) {
                       return GestureDetector(
+                        onTap: () {
+                          // التعامل مع الفئة المختارة
+                        },
                         child: Column(
                           children: [
-                            Column(
-                              children: [
-                                Container(
-                                    width: 64,
-                                    height: 64,
-                                    decoration: BoxDecoration(
-                                      color: CategoryModelItem
-                                          .catgeroyModel[index].color,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Image.asset(CategoryModelItem
-                                        .catgeroyModel[index].image)),
-                                Text(
-                                  CategoryModelItem.catgeroyModel[index].name,
-                                  style: const TextStyle(
-                                      color: ColorManger.kWhiteColor,
-                                      fontSize: 14),
-                                ),
-                              ],
+                            Container(
+                              width: 64,
+                              height: 64,
+                              decoration: BoxDecoration(
+                                color: category.color,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Image.asset(category.image),
+                            ),
+                            Text(
+                              category.name,
+                              style: const TextStyle(
+                                  color: ColorManger.kWhiteColor, fontSize: 14),
                             ),
                           ],
                         ),
                       );
-                    })),
+                    }
+                    // عرض الفئات من Firebase
+                    else if (category is CategoryModel) {
+                      return GestureDetector(
+                        onTap: () {
+                          // التعامل مع الفئة المختارة
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 64,
+                              height: 64,
+                              decoration: BoxDecoration(
+                                color: Color(int.parse(category.color)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Icon(
+                                IconData(
+                                    int.parse(category.icon), 
+                                ),
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              category.categoryName,
+                              style: const TextStyle(
+                                  color: ColorManger.kWhiteColor, fontSize: 14),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+
+                    return const SizedBox.shrink();
+                  },
+                );
+              }),
+            ),
             const SizedBox(
               height: 10,
             ),
             CustomButton(
-              width: 289,
-              hight: 48,
               onPressed: () {
                 Get.toNamed(RouteName.kCategoryScreens);
               },
               TextColor: ColorManger.kWhiteColor,
               color: ColorManger.kHeliotrop,
               title: 'Add Category',
-            )
+            ),
           ],
         ),
       ),

@@ -21,7 +21,9 @@ class _TaskActionsRowState extends State<TaskActionsRow> {
           TimeOfTask(),
           CategoryItems(),
           TaskPriority(),
-          Spacer(flex: 1,),
+          Spacer(
+            flex: 1,
+          ),
           SendTaskButton(),
         ],
       ),

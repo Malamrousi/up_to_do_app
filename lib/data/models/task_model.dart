@@ -1,11 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'category_model.dart';
 
 class TaskModel {
   final String title;
   final String description;
-  final CategoryModel category;
-  bool? isDone ;
+  final Map<String, dynamic> category;
+  bool? isDone;
   final int taskPriority;
   final DateTime startTime;
   final DateTime? endTime;
@@ -15,10 +13,10 @@ class TaskModel {
     required this.title,
     required this.description,
     required this.category,
-     this.isDone=false,
+    this.isDone = false,
     required this.taskPriority,
     required this.startTime,
-     this.endTime,
+    this.endTime,
     required this.date,
   });
 
@@ -26,7 +24,7 @@ class TaskModel {
     return TaskModel(
       title: data['title'],
       description: data['description'],
-      category: CategoryModel.fromJson(data['category']),
+      category: data['category'],
       isDone: data['is_done'],
       taskPriority: data['task_priority'],
       startTime: DateTime.parse(data['startTime']),
@@ -39,12 +37,12 @@ class TaskModel {
     return {
       'title': title,
       'description': description,
-      'category': category.toJson(),
+      'category': category,
       'is_done': isDone,
       'task_priority': taskPriority,
-      'startTime': startTime,
-      'endTime': endTime,
-      'date': date
+      'startTime': startTime.toIso8601String(),
+      'endTime': endTime?.toIso8601String(),
+      'date': date.toIso8601String()
     };
   }
 }

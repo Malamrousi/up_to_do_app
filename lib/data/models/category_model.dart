@@ -1,18 +1,18 @@
 class CategoryModel {
   final String categoryName;
-  final String image;
+  final String icon;
   final String color;
 
   CategoryModel({
     required this.categoryName,
-    required this.image,
+    required this.icon,
     required this.color,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> data) {
     return CategoryModel(
       categoryName: data['category_name'],
-      image: data['image'],
+      icon: data['icon'],
       color: data['color'], 
     );
   }
@@ -20,7 +20,7 @@ class CategoryModel {
   Map<String, dynamic> toJson() {
     return {
       'category_name': categoryName,
-      'image': image,
+      'image': icon,
       'color': color, 
     };
   }
