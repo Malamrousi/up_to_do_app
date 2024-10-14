@@ -26,10 +26,6 @@ class CategoryItems extends StatelessWidget {
         ));
   }
 }
-
-
-
-
 class TaskCategoryItems extends StatefulWidget {
   const TaskCategoryItems({super.key});
 
@@ -68,8 +64,8 @@ class _TaskCategoryItemsState extends State<TaskCategoryItems> {
             Expanded(
               child: Obx(() {
                 final allCategories = [
-                  ...CategoryModelItem.catgeroyModel, // الفئات الثابتة
-                  ...categoryController.categories, // الفئات القادمة من Firebase
+                  ...CategoryModelItem.catgeroyModel,
+                  ...categoryController.categories,
                 ];
 
                 return GridView.builder(
@@ -78,13 +74,9 @@ class _TaskCategoryItemsState extends State<TaskCategoryItems> {
                       crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10),
                   itemBuilder: (context, index) {
                     var category = allCategories[index];
-
-                    // عرض الفئات الثابتة
                     if (category is CategoryModelItem) {
                       return GestureDetector(
-                        onTap: () {
-                          // التعامل مع الفئة المختارة
-                        },
+                        onTap: () {},
                         child: Column(
                           children: [
                             Container(
@@ -105,28 +97,31 @@ class _TaskCategoryItemsState extends State<TaskCategoryItems> {
                         ),
                       );
                     }
-                    // عرض الفئات من Firebase
                     else if (category is CategoryModel) {
                       return GestureDetector(
                         onTap: () {
-                          // التعامل مع الفئة المختارة
                         },
                         child: Column(
                           children: [
                             Container(
+
                               width: 64,
                               height: 64,
                               decoration: BoxDecoration(
+
                                 color: Color(int.parse(category.color)),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Icon(
                                 IconData(
-                                    int.parse(category.icon), 
+                                  int.parse(category.icon),
+                                  fontFamily: 'MaterialIcons',
                                 ),
-                                color: Colors.white,
+                                size: 30,
+                                color: Color(int.parse(category.color)).withOpacity(1),
                               ),
-                            ),
+                        ),
+                            
                             Text(
                               category.categoryName,
                               style: const TextStyle(

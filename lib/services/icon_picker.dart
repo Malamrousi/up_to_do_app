@@ -79,7 +79,6 @@ Future<IconData?> showIconPicker(
 
   IconData? selectedIcon = defalutIcon;
 
-
   await showDialog(
       context: context,
       builder: (_) => AlertDialog(

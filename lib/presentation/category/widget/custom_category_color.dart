@@ -12,25 +12,25 @@ class CustomCategoryColor extends StatefulWidget {
 }
 
 class _CustomCategoryColorState extends State<CustomCategoryColor> {
-  final List<Color> catgeroyColor = const [
-    Color(0xffC9CC41),
-    Color(0xff66CC41),
-    Color(0xff41CCA7),
-    Color(0xff4181CC),
-    Color(0xff41A2CC),
-    Color(0xffCC8441),
-    Color(0xff9741CC),
-    Color(0xffCC4173),
-    Color(0xFF80FFFF),
-    Color(0xFF80FFD9),
-    Color(0xFF809CFF),
-    Color(0xFFFF80EB),
-    Color(0xFF80FFA3),
-    Color(0xFF80D1FF),
-    Color(0xFFFFCC80),
+  final List<Color> categoryColor = const [
+    Color(0xBFC9CC41),
+    Color(0xBF66CC41),
+    Color(0xBF41CCA7),
+    Color(0xBF4181CC),
+    Color(0xBF41A2CC),
+    Color(0xBFCC8441),
+    Color(0xBF9741CC),
+    Color(0xBFCC4173),
+    Color(0xBF80FFFF),
+    Color(0xBF80FFD9),
+    Color(0xBF809CFF),
+    Color(0xBFFF80EB),
+    Color(0xBF80FFA3),
+    Color(0xBF80D1FF),
+    Color(0xBFFFFCC8),
   ];
 
-  Color selectedColor = const Color(0xFFCCFF80);
+  Color selectedColor = const Color(0xBFCCFF80);
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +49,8 @@ class _CustomCategoryColorState extends State<CustomCategoryColor> {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal, // Enable horizontal scrolling
           child: Row(
-            children: List.generate(catgeroyColor.length, (index) {
-              final color = catgeroyColor[index];
+            children: List.generate(categoryColor.length, (index) {
+              final color = categoryColor[index];
 
               return GestureDetector(
                 onTap: () {

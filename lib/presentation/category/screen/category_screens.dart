@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 // constant
 import 'package:todo_app/core/utils/color_manger.dart';
-import 'package:todo_app/core/utils/route_name.dart';
 import 'package:todo_app/core/utils/string_manger.dart';
 import 'package:todo_app/data/models/category_model.dart';
 import 'package:todo_app/presentation/category/widget/custom_Icon_picker.dart';
@@ -9,7 +10,6 @@ import 'package:todo_app/presentation/category/widget/custom_category_color.dart
 import 'package:todo_app/presentation/category/widget/custom_button.dart';
 import '../../../data/controller/category_controller.dart';
 import '../widget/custom_category_text_filed.dart';
-import 'package:get/get.dart';
 
 class CategoryScreens extends StatefulWidget {
   const CategoryScreens({super.key});
@@ -19,7 +19,7 @@ class CategoryScreens extends StatefulWidget {
 }
 
 class _CategoryScreensState extends State<CategoryScreens> {
-  final TextEditingController categoryNameController=TextEditingController();
+  final TextEditingController categoryNameController = TextEditingController();
   IconData? _iconData;
 
   Color? _selectedColor = Colors.blue;
@@ -98,16 +98,14 @@ class _CategoryScreensState extends State<CategoryScreens> {
                   ),
                   CustomButton(
                     onPressed: () {
-                      if (
-                          _iconData != null) {
+                      if (_iconData != null) {
                         final newCategory = CategoryModel(
                             categoryName: categoryNameController.text,
-                            icon: _iconData.toString(),
+                            icon: _iconData!.codePoint.toString(),
                             color: _selectedColor!.value.toString());
                         categoryController.addCategories(newCategory);
-                        Get.toNamed(RouteName.kIndexScreen);
+                        Get.back();
                       }
-                  
                     },
                     title: 'Create Category',
                     TextColor: ColorManger.kWhiteColor,

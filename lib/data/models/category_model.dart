@@ -20,7 +20,7 @@ class CategoryModel {
   Map<String, dynamic> toJson() {
     return {
       'category_name': categoryName,
-      'image': icon,
+      'icon': icon,
       'color': color, 
     };
   }
