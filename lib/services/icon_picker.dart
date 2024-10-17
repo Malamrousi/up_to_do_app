@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/core/utils/color_manger.dart';
 
 Future<IconData?> showIconPicker(
-    {required BuildContext context, IconData? defalutIcon}) async {
+    {required BuildContext context, IconData? defaultIcon}) async {
   final List<IconData> allIcons = [
     // Grocery
     Icons.shopping_cart,
@@ -77,7 +77,7 @@ Future<IconData?> showIconPicker(
     Icons.hourglass_bottom,
   ];
 
-  IconData? selectedIcon = defalutIcon;
+  IconData? selectedIcon = defaultIcon;
 
   await showDialog(
       context: context,
@@ -118,7 +118,7 @@ Future<IconData?> showIconPicker(
                             },
                           ),
                         ),
-                      )),
+                      ),),
             ),
             actions: [
               ElevatedButton(

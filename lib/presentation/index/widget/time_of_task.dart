@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/core/utils/color_manger.dart';
 
 class TimeOfTask extends StatefulWidget {
-  const TimeOfTask({super.key});
+  const TimeOfTask({
+    super.key,
+    required this.onDateTimeSelected,
+  });
+
+  final void Function(DateTime dateTime, TimeOfDay timeOfDay)
+      onDateTimeSelected;
 
   @override
   State<TimeOfTask> createState() => _TimeOfTaskState();
@@ -11,7 +17,6 @@ class TimeOfTask extends StatefulWidget {
 class _TimeOfTaskState extends State<TimeOfTask> {
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
-
   Future<void> selectDateTime(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       barrierColor: ColorManger.kPrimaryColor,
@@ -33,10 +38,6 @@ class _TimeOfTaskState extends State<TimeOfTask> {
       setState(() {
         selectedDate = pickedDate;
       });
-    } else {
-      setState(() {
-        selectedDate = DateTime.now();
-      });
     }
 
     final TimeOfDay? pickedTime = await showTimePicker(
@@ -57,11 +58,8 @@ class _TimeOfTaskState extends State<TimeOfTask> {
       setState(() {
         selectedTime = pickedTime;
       });
-    } else {
-      setState(() {
-        selectedTime = TimeOfDay.now();
-      });
     }
+    widget.onDateTimeSelected(selectedDate!, selectedTime!);
   }
 
   @override

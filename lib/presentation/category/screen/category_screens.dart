@@ -11,11 +11,15 @@ import 'package:todo_app/presentation/category/widget/custom_button.dart';
 import '../../../data/controller/category_controller.dart';
 import '../widget/custom_category_text_filed.dart';
 
+
+
+
+
 class CategoryScreens extends StatefulWidget {
   const CategoryScreens({super.key});
 
   @override
-  _CategoryScreensState createState() => _CategoryScreensState();
+_CategoryScreensState createState() => _CategoryScreensState();
 }
 
 class _CategoryScreensState extends State<CategoryScreens> {
@@ -69,7 +73,7 @@ class _CategoryScreensState extends State<CategoryScreens> {
               const SizedBox(
                 height: 20,
               ),
-              IconPicker(
+              CustomIconPicker(
                 onIconPicked: (icon) {
                   setState(() {
                     _iconData = icon;

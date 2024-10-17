@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/core/utils/color_manger.dart';
 import 'package:todo_app/services/icon_picker.dart';
 
-class IconPicker extends StatefulWidget {
-  const IconPicker({super.key, required this.onIconPicked});
+class CustomIconPicker extends StatefulWidget {
+  const CustomIconPicker({super.key, required this.onIconPicked});
 
   final void Function(IconData icon) onIconPicked;
 
   @override
-  State<IconPicker> createState() => _IconPickerState();
+  State<CustomIconPicker> createState() => _CustomIconPickerState();
 }
 
-class _IconPickerState extends State<IconPicker> {
+class _CustomIconPickerState extends State<CustomIconPicker> {
   IconData? _selectedIcon;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _IconPickerState extends State<IconPicker> {
       onTap: () async {
         final IconData? result = await showIconPicker(
           context: context,
-          defalutIcon: _selectedIcon,
+          defaultIcon: _selectedIcon,
         );
 
         if (result != null) {

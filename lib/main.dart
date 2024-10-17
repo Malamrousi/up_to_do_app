@@ -24,12 +24,10 @@ import 'data/controller/category_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
-
-  Get.put(AuthContoller());
+  await Firebase.initializeApp();
+  Get.put(AuthController());
   Get.put(CategoryController());
   Get.put(TaskController());
-  
   runApp(const MyApp());
 }
 
@@ -40,7 +38,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: const UpToDoScreen(),
-
       debugShowCheckedModeBanner: false,
       getPages: [
         GetPage(name: RouteName.kUpToDo, page: () => const UpToDoScreen()),

@@ -12,9 +12,9 @@ class RegisterSocialAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthContoller authController = Get.find<AuthContoller>();
+    AuthController authController = Get.find<AuthController>();
 
-    return GetBuilder<AuthContoller>(builder: (contoller) {
+    return GetBuilder<AuthController>(builder: (contoller) {
       if (authController.isLoading.value) {
         return const Center(
           child: CircularProgressIndicator(),

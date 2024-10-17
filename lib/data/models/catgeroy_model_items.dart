@@ -13,7 +13,7 @@ class CategoryModelItem {
     required this.image,
   });
 
-  static List<CategoryModelItem> catgeroyModel = [
+  static List<CategoryModelItem> categoryModel = [
     CategoryModelItem(name: 'Grocery', color: const Color(0XFFCCFF80), image: ImageManger.kGrocery),
     CategoryModelItem(name: 'Work', color: const Color(0XFFFF9680), image: ImageManger.kWork),
     CategoryModelItem(name: 'sport', color: const Color(0XFF80FFFF), image: ImageManger.kSport),

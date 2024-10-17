@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todo_app/data/controller/task_controller.dart';
 //widget
 import 'category_items.dart';
 import 'send_task_button.dart';
@@ -13,18 +15,44 @@ class TaskActionsRow extends StatefulWidget {
 }
 
 class _TaskActionsRowState extends State<TaskActionsRow> {
+  final TaskController taskController = Get.find();
+  DateTime? selectedDate = DateTime.now();
+  TimeOfDay? selectedTime = TimeOfDay.now();
+  int? taskPriority;
+
+  void onDateTimeSelected(DateTime date, TimeOfDay time) {
+    setState(() {
+      selectedDate = date;
+      selectedTime = time;
+    });
+  }
+
+  void onPrioritySelected(int priority) {
+    setState(() {
+      taskPriority = priority;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: Row(
         children: [
-          TimeOfTask(),
-          CategoryItems(),
-          TaskPriority(),
-          Spacer(
+          TimeOfTask(
+            onDateTimeSelected: onDateTimeSelected,
+          ),
+         const CategoryItems(),
+          TaskPriority(
+            prioritySelected:onPrioritySelected ,
+          ),
+        const  Spacer(
             flex: 1,
           ),
-          SendTaskButton(),
+          SendTaskButton(
+           onPressed: () {
+            
+           },
+          ),
         ],
       ),
     );

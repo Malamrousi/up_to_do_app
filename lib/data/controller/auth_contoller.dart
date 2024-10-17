@@ -14,8 +14,8 @@ import 'package:todo_app/data/models/user_model.dart';
 import '../helpers/auth_exception_handler.dart';
 //firebase
 
-class AuthContoller extends GetxController {
-  static AuthContoller to = Get.find();
+class AuthController extends GetxController {
+  static AuthController to = Get.find();
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

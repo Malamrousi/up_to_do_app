@@ -6,7 +6,8 @@ import '../../../core/utils/color_manger.dart';
 import 'custom_button.dart';
 
 class TaskPriority extends StatefulWidget {
-  const TaskPriority({super.key});
+  const TaskPriority({super.key, required this.prioritySelected});
+  final void Function(int) prioritySelected;
 
   @override
   State<TaskPriority> createState() => _TaskPriorityState();
@@ -18,7 +19,9 @@ class _TaskPriorityState extends State<TaskPriority> {
     return IconButton(
         onPressed: () {
           Get.bottomSheet(
-            const TaskPriorityItems(),
+            TaskPriorityItems(
+              prioritySelected: widget.prioritySelected,
+            ),
           );
         },
         icon: const Icon(Icons.flag_outlined,
@@ -27,7 +30,9 @@ class _TaskPriorityState extends State<TaskPriority> {
 }
 
 class TaskPriorityItems extends StatefulWidget {
-  const TaskPriorityItems({super.key});
+  const TaskPriorityItems({super.key, required this.prioritySelected});
+
+  final void Function(int) prioritySelected;
 
   @override
   State<TaskPriorityItems> createState() => _TaskPriorityItemsState();
@@ -76,10 +81,9 @@ class _TaskPriorityItemsState extends State<TaskPriorityItems> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: activeIndex==index
+                            color: activeIndex == index
                                 ? ColorManger.kHeliotrop
                                 : ColorManger.kMineshaft,
-                                
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Center(
@@ -115,14 +119,19 @@ class _TaskPriorityItemsState extends State<TaskPriorityItems> {
                 CustomButton(
                   width: 153,
                   hight: 48,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.back();
+                  },
                   textColor: ColorManger.kHeliotrop,
                   title: 'Cancel',
                 ),
                 CustomButton(
                   width: 153,
                   hight: 48,
-                  onPressed: () {},
+                  onPressed: () {
+                    widget.prioritySelected(activeIndex);
+                    Get.back();
+                  },
                   textColor: ColorManger.kWhiteColor,
                   color: ColorManger.kHeliotrop,
                   title: 'Save',

@@ -23,7 +23,7 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final AuthContoller authController = AuthContoller.to;
+  final AuthController authController = AuthController.to;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
@@ -76,7 +76,7 @@ class _RegisterFormState extends State<RegisterForm> {
             const SizedBox(
               height: HightManger.H48,
             ),
-            GetBuilder<AuthContoller>(builder: (contoller) {
+            GetBuilder<AuthController>(builder: (contoller) {
               if (authController.isLoading.value){
              return   const Center(
                   child: CircularProgressIndicator(),

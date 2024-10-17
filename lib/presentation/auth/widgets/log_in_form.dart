@@ -22,7 +22,7 @@ class LogInForm extends StatefulWidget {
 class _LogInFormState extends State<LogInForm> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   // final AuthenticationController authContoller = Get.find();
-  final AuthContoller authController = AuthContoller.to;
+  final AuthController authController = AuthController.to;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
@@ -64,7 +64,7 @@ class _LogInFormState extends State<LogInForm> {
             const SizedBox(
               height: HightManger.H48,
             ),
-            GetBuilder<AuthContoller>(builder: (contoller) {
+            GetBuilder<AuthController>(builder: (contoller) {
               if (authController.isLoading.value) {
                 return const Center(
                   child: CircularProgressIndicator(),
