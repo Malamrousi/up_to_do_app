@@ -2,10 +2,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo_app/core/utils/bindings%20.dart';
 import 'package:todo_app/core/utils/color_manger.dart';
 
 //constant
 import 'package:todo_app/core/utils/route_name.dart';
+import 'package:todo_app/data/controller/auth_contoller.dart';
+import 'package:todo_app/data/controller/category_controller.dart';
 import 'package:todo_app/data/controller/task_controller.dart';
 
 //screen
@@ -17,17 +20,12 @@ import 'package:todo_app/presentation/index/screen/index_screen.dart';
 import 'package:todo_app/presentation/auth/screen/login.dart';
 import 'package:todo_app/presentation/category/screen/category_screens.dart';
 
-//controller
-
-import 'data/controller/auth_contoller.dart';
-import 'data/controller/category_controller.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  Get.put(AuthController());
-  Get.put(CategoryController());
-  Get.put(TaskController());
+ Get.put(AuthController());
+    Get.put(CategoryController());
+    Get.put(TaskController());
   runApp(const MyApp());
 }
 
@@ -37,10 +35,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+    initialBinding: RootBinding(),
       home: const UpToDoScreen(),
       debugShowCheckedModeBanner: false,
       getPages: [
-        GetPage(name: RouteName.kUpToDo, page: () => const UpToDoScreen()),
+        GetPage(
+            name: RouteName.kUpToDo,
+            page: () => const UpToDoScreen(),
+            ),
         GetPage(name: RouteName.kOnBoarding, page: () => const IntroScreen()),
         GetPage(name: RouteName.kOnBoarding, page: () => const IntroScreen()),
         GetPage(

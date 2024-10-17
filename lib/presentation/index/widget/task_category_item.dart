@@ -93,6 +93,7 @@ class _TaskCategoryItemsState extends State<TaskCategoryItems> {
                             'color': category.color,
                             'icon': category.icon,
                           });
+                               Get.back();
                         },
                         child: Column(
                           children: [

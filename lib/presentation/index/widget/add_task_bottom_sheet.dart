@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 //constant
 import 'package:todo_app/core/utils/color_manger.dart';
 import 'package:todo_app/core/utils/string_manger.dart';
@@ -12,7 +11,6 @@ import 'package:todo_app/presentation/index/widget/time_of_task.dart';
 
 import 'add_task_text_filed.dart';
 import 'category_items.dart';
-import 'task_actions_row.dart';
 
 //widget
 
@@ -122,6 +120,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
 
                       if (fromKey.currentState!.validate()) {
                         taskController.addTask(newTask);
+                        Get.back();
                       }
                     },
                   ),

@@ -19,11 +19,10 @@ class TaskModel {
     required TimeOfDay startTime, 
     TimeOfDay? endTime, 
     required this.date,
-  })  : startTime = '${startTime.hour}:${startTime.minute}', // Convert to string
-        endTime = endTime != null ? '${endTime.hour}:${endTime.minute}' : null; // Convert to string
+  })  : startTime = '${startTime.hour}:${startTime.minute}', 
+        endTime = endTime != null ? '${endTime.hour}:${endTime.minute}' : null; 
 
   factory TaskModel.fromJson(data) {
-    // Parse the start and end time strings back to TimeOfDay
     final startTimeSplit = data['startTime'].split(':');
     final endTimeSplit = data['endTime']?.split(':');
     
@@ -54,8 +53,8 @@ class TaskModel {
       'category': category,
       'is_done': isDone,
       'task_priority': taskPriority,
-      'startTime': startTime, // Already converted to string
-      'endTime': endTime, // Already converted to string
+      'startTime': startTime, 
+      'endTime': endTime, 
       'date': date.toIso8601String()
     };
   }
