@@ -9,6 +9,8 @@ class ColorManger {
   static const Color kDividerColor = Color(0xff5979797);
   static const Color kPurple =  Colors.purple;
   static const Color kMineshaft  =  Color(0xff363636);
+  static const Color kSilver  =  Color(0xffAFAFAF);
+
 
 
 }

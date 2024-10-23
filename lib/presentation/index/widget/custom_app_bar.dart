@@ -10,23 +10,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: AppBar(
-        centerTitle: true,
-        leading: const Icon(
-          Icons.filter_list,
-          color: ColorManger.kWhiteColor,
-        ),
-        title: const Text(StringManger.kIndex),
-        actions: [
-          Image.asset(
-            ImageManger.kProfile,
-            width: WidthManger.W42,
-            height: HightManger.H42,
-          )
-        ],
+    return AppBar(
+      centerTitle: true,
+      leading: const Icon(
+        Icons.filter_list,
+        color: ColorManger.kWhiteColor,
       ),
+      title: const Text(StringManger.kIndex),
+      actions: [
+        Image.asset(
+          ImageManger.kProfile,
+          width: WidthManger.W42,
+          height: HightManger.H42,
+        )
+      ],
     );
   }
 
